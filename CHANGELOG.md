@@ -1,3 +1,3 @@
-# enum-extensions
+# Changelog
 
 <!-- changelog: start -->
