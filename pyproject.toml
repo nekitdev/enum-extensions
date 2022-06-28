@@ -114,8 +114,6 @@ warn_unreachable = true
 warn_redundant_casts = true
 warn_unused_ignores = false  # compatibility
 
-plugins = ["enum_extensions.plugins.mypy"]
-
 [tool.changelog]
 name = "enum-extensions"
 version = "0.1.0"
