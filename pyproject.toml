@@ -34,6 +34,8 @@ include = "enum_extensions"
 [tool.poetry.dependencies]
 python = ">= 3.7"
 
+typing-extensions = ">= 4.2.0"
+
 [tool.poetry.group.format]
 optional = true
 
