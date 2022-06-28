@@ -25,12 +25,10 @@ from typing import (
 )
 
 from typing_extensions import Literal, TypeGuard, TypeVarTuple, Unpack
-from typing_inspect import is_classvar as is_class_variable  # type: ignore
 
 from enum_extensions.auto import MaybeAuto, is_auto
 from enum_extensions.bits import is_single_bit
 from enum_extensions.constants import (
-    ANNOTATIONS,
     COMMA,
     DIRECT_CALLER,
     DOCUMENTATION,
