@@ -21,7 +21,6 @@ from enum_extensions.typing import Namespace, get_name
 
 __all__ = (
     "get_frame",
-    "create_annotations_type",
     "is_descriptor",
     "is_double_under_name",
     "make_namespace_unpicklable",

@@ -37,7 +37,6 @@ from enum_extensions.constants import (
     ENUM_IGNORE,
     ENUM_PRESERVE,
     ENUM_START,
-    ENUM_UNKNOWN,
     ENUM_VALUE,
     INVALID_NAMES,
     MEMBER_MAPPING,
@@ -88,6 +87,7 @@ __all__ = (
     "Enum",
     "IntEnum",
     "StringEnum",
+    "StrEnum",
     "is_enum",
     "is_enum_member",
     "enum_generate_next_value",
@@ -135,7 +135,6 @@ class EnumDict(Namespace):
         self._generate_next_value: Optional[GenerateNextValue[Any]] = None
         self._start: Optional[Any] = None
         self._ignore: Set[str] = set()
-        self._unknown: bool = False
 
         self._member_names: List[str] = []
         self._member_values: List[Any] = []
@@ -156,10 +155,6 @@ class EnumDict(Namespace):
     def ignore(self) -> Set[str]:
         return self._ignore
 
-    @property
-    def unknown(self) -> bool:
-        return self._unknown
-
     def _set_generate_next_value(
         self, generate_next_value: Optional[GenerateNextValue[Any]]
     ) -> None:
@@ -174,9 +169,6 @@ class EnumDict(Namespace):
 
         else:
             self._ignore = set(ignore)
-
-    def _set_unknown(self, unknown: bool) -> None:
-        self._unknown = unknown
 
     @property
     def member_names(self) -> List[str]:
@@ -227,9 +219,6 @@ class EnumDict(Namespace):
 
         elif name == ENUM_START:
             self._set_start(value)
-
-        elif name == ENUM_UNKNOWN:
-            self._set_unknown(value)
 
         elif self.is_reserved(name):
             raise ValueError(ATTEMPT_TO_REUSE.format(tick(name)))
@@ -539,7 +528,6 @@ class EnumType(type):
             namespace[ENUM_IGNORE] = ignore
 
         namespace[ENUM_START] = start
-        namespace[ENUM_UNKNOWN] = unknown
 
         return namespace
 
@@ -642,7 +630,7 @@ class EnumType(type):
 
         # add information
         new_enum_type._flag = flag
-        new_enum_type._unknown = namespace.unknown
+        new_enum_type._unknown = unknown
         new_enum_type._start = namespace.start
         new_enum_type._member_names = []
         new_enum_type._member_values = []
@@ -1532,3 +1520,6 @@ class StringEnum(str, Enum):
         return member
 
     enum_generate_next_value = staticmethod(case_fold_name_next_value)
+
+
+StrEnum = StringEnum

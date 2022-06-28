@@ -27,7 +27,6 @@ __all__ = (
     "ENUM_GENERATE_NEXT_VALUE",
     "ENUM_IGNORE",
     "ENUM_START",
-    "ENUM_UNKNOWN",
     "ENUM_NAME",
     "ENUM_TYPE",
     "ENUM_VALUE",
@@ -85,7 +84,6 @@ PICKLE_METHODS = frozenset(("__getnewargs_ex__", "__getnewargs__", "__reduce_ex_
 ENUM_GENERATE_NEXT_VALUE = "enum_generate_next_value"
 ENUM_IGNORE = "enum_ignore"
 ENUM_START = "enum_start"
-ENUM_UNKNOWN = "enum_unknown"
 ENUM_NAME = "__enum_name__"
 ENUM_TYPE = "__enum_type__"
 ENUM_VALUE = "__enum_value__"
