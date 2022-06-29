@@ -32,7 +32,9 @@ __all__ = (
     "ENUM_VALUE",
     "ENUM_DOCUMENTATION",
     "ENUM_PRESERVE",
-    "MEMBER_MAPPING",
+    "MEMBER_MAPPING_PRIVATE",
+    "UNKNOWN_PRIVATE",
+    "BOUNDARY_PRIVATE",
     "INVALID_NAMES",
     "NONE_NEW",
     "OBJECT_NEW",
@@ -92,7 +94,9 @@ ENUM_DOCUMENTATION = "An enumeration."
 
 ENUM_PRESERVE = ("__format__", "__repr__", "__str__", "__reduce_ex__")
 
-MEMBER_MAPPING = "_member_mapping"
+MEMBER_MAPPING_PRIVATE = "_member_mapping"
+UNKNOWN_PRIVATE = "_unknown"
+BOUNDARY_PRIVATE = "_boundary"
 
 MRO = "mro"
 

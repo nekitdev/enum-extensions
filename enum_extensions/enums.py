@@ -39,7 +39,7 @@ from enum_extensions.constants import (
     ENUM_START,
     ENUM_VALUE,
     INVALID_NAMES,
-    MEMBER_MAPPING,
+    MEMBER_MAPPING_PRIVATE,
     MODULE,
     NAME,
     NESTED_CALLER,
@@ -51,6 +51,7 @@ from enum_extensions.constants import (
     REDUCE,
     SPACE,
     STRICT,
+    UNKNOWN_PRIVATE,
     USELESS_NEW,
     UTF_8,
 )
@@ -512,7 +513,7 @@ class EnumType(type):
         *,
         ignore: Optional[MaybeIterable[str]] = None,
         start: Optional[Any] = None,
-        unknown: bool = False,
+        unknown: Optional[bool] = None,
         flag: bool = False,
         **kwargs: Any,
     ) -> EnumDict:
@@ -539,7 +540,7 @@ class EnumType(type):
         *,
         ignore: Optional[MaybeIterable[str]] = None,
         start: Optional[Any] = None,
-        unknown: bool = False,
+        unknown: Optional[bool] = None,
         flag: bool = False,
         **kwargs: Any,
     ) -> ET:
@@ -628,6 +629,9 @@ class EnumType(type):
             if data_method is not None and data_method is type_method:
                 set_attribute(new_enum_type, name, enum_method)
 
+        if unknown is None:
+            unknown = get_attribute(new_enum_type, UNKNOWN_PRIVATE, False)
+
         # add information
         new_enum_type._flag = flag
         new_enum_type._unknown = unknown
@@ -692,7 +696,7 @@ class EnumType(type):
         qualified_name: Optional[str] = ...,
         type: Optional[AnyType] = ...,
         start: Optional[Any] = ...,
-        unknown: bool = ...,
+        unknown: Optional[bool] = ...,
         **members: Any,
     ) -> ET:
         ...
@@ -706,7 +710,7 @@ class EnumType(type):
         qualified_name: Optional[str] = None,
         type: Optional[AnyType] = None,
         start: Optional[Any] = None,
-        unknown: bool = False,
+        unknown: Optional[bool] = None,
         **members: Any,
     ) -> Union[E, Type[E]]:
         """Looks up an existing member or creates a new enumeration.
@@ -734,6 +738,8 @@ class EnumType(type):
             start: The initial value of the new enumeration
                 (used by [`auto`][enum_extensions.auto.auto]).
             unknown: Whether to enable unknown values of enumeration members.
+                [`None`][None] means that it should be inherited.
+                The default value in the end is [`False`][False].
             **members: A `name -> value` mapping of [`Enum`][enum_extensions.enums.Enum] members.
 
         Raises:
@@ -766,7 +772,7 @@ class EnumType(type):
         qualified_name: Optional[str] = None,
         type: Optional[AnyType] = None,
         start: Optional[Any] = None,
-        unknown: bool = False,
+        unknown: Optional[bool] = None,
         direct_call: bool = True,
         **members: Any,
     ) -> ET:
@@ -786,6 +792,8 @@ class EnumType(type):
             start: The initial value of the new enumeration
                 (used by [`auto`][enum_extensions.auto.auto]).
             unknown: Whether to enable unknown values of enumeration members.
+                [`None`][None] means that it should be deduced from inheritance.
+                The default value in the end is [`False`][False].
             direct_call: Controls if the function is called directly or not.
                 Use this argument with caution.
             **members: A `name -> value` mapping of [`Enum`][enum_extensions.enums.Enum] members.
@@ -1093,7 +1101,7 @@ class EnumType(type):
         return ENUM_REPRESENTATION.format(tick(get_name(self)))
 
     def __setattr__(self, name: str, value: Any) -> None:
-        member_mapping = vars(self).get(MEMBER_MAPPING, {})  # prevent recursion
+        member_mapping = vars(self).get(MEMBER_MAPPING_PRIVATE, {})  # prevent recursion
 
         if name in member_mapping:
             raise AttributeError(CAN_NOT_REASSIGN_MEMBER.format(tick(name)))

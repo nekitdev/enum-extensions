@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from builtins import getattr as get_attribute
 from builtins import isinstance as is_instance
 from builtins import issubclass as is_subclass
 from builtins import type as standard_type
@@ -23,6 +24,7 @@ from typing_extensions import TypeGuard
 from enum_extensions.auto import auto
 from enum_extensions.bits import bin, bit_at, bit_count, bit_mask, is_single_bit, iter_bits
 from enum_extensions.constants import (
+    BOUNDARY_PRIVATE,
     COMMA,
     DIRECT_CALLER,
     MODULE,
@@ -62,8 +64,69 @@ class FlagBoundary(StringEnum):
     """
 
     STRICT = auto()
+    """Out-of-range values cause a [`ValueError`][ValueError] to be raised.
+    This is the default for [`Flag`][enum_extensions.flags.Flag].
+
+    Example:
+        ```python
+        from enum_extensions import STRICT, Flag
+
+        class StrictFlag(Flag, boundary=STRICT):
+            RED = auto()
+            GREEN = auto()
+            BLUE = auto()
+        ```
+
+        ```python
+        >>> StrictFlag((1 << 2) + (1 << 4))
+
+        Traceback (most recent call last):
+          ...
+        ValueError: invalid value 20 in `StrictFlag`:
+            given 0b0 10100
+          allowed 0b0 00111
+        ```
+    """
+
     CONFORM = auto()
+    """Out-of-range values have invalid values removed, leaving a valid
+    [`Flag`][enum_extensions.flags.Flag] member.
+
+    Example:
+        ```python
+        from enum_extensions import CONFORM, Flag
+
+        class ConformFlag(Flag, boundary=CONFORM):
+            RED = auto()
+            GREEN = auto()
+            BLUE = auto()
+        ```
+
+        ```python
+        >>> ConformFlag((1 << 2) + (1 << 4))
+        <ConformFlag.BLUE: 4>
+        ```
+    """
+
     KEEP = auto()
+    """Out-of-range values are kept along with the [`Flag`][enum_extensions.flags.Flag] membership.
+    This is the default for [`IntFlag`][enum_extensions.flags.IntFlag].
+
+    Example:
+        ```python
+        from enum_extensions import KEEP, Flag
+
+        class KeepFlag(Flag, boundary=KEEP):
+            RED = auto()
+            GREEN = auto()
+            BLUE = auto()
+        ```
+
+        ```python
+        >>> KeepFlag((1 << 2) + (1 << 4))
+        <KeepFlag.BLUE|0x10: 4>
+        ```
+    """
 
 
 STRICT, CONFORM, KEEP = FlagBoundary
@@ -127,18 +190,12 @@ class FlagType(EnumType):
         boundary: Optional[FlagBoundary] = None,
         **kwargs: Any,
     ) -> FT:
-        if boundary is None:
-            flag_type = find_enum_type(bases)
-
-            try:
-                boundary = flag_type._boundary
-
-            except AttributeError:
-                boundary = STRICT
-
         new_flag_type = super().__new__(
             cls, flag_name, bases, namespace, ignore=ignore, start=start, flag=True
         )
+
+        if boundary is None:
+            boundary = get_attribute(new_flag_type, BOUNDARY_PRIVATE, STRICT)
 
         flag_mask = 0
 
@@ -243,6 +300,8 @@ class FlagType(EnumType):
             type: A data type of the new [`Flag`][enum_extensions.flags.Flag].
             start: The initial value of the new flag (used by [`auto`][enum_extensions.auto.auto]).
             boundary: The [`FlagBoundary`][enum_extensions.flags.FlagBoundary] to use.
+                [`None`] means it should be inherited. The default boundary in the end is
+                [`STRICT`][enum_extensions.flags.FlagBoundary.STRICT].
             **members: A `name -> value` mapping of [`Flag`][enum_extensions.flags.Flag] members.
 
         Raises:
@@ -296,6 +355,8 @@ class FlagType(EnumType):
             type: A data type of the new [`Flag`][enum_extensions.flags.Flag].
             start: The initial value of the new flag (used by [`auto`][enum_extensions.auto.auto]).
             boundary: The [`FlagBoundary`][enum_extensions.flags.FlagBoundary] to use.
+                [`None`][None] means it should be inherited. The default boundary in the end is
+                [`STRICT`][enum_extensions.flags.FlagBoundary.STRICT].
             direct_call: Controls if the function is called directly or not.
                 This argument should be used with caution.
             **members: A `name -> value` mapping of [`Flag`][enum_extensions.flags.Flag] members.
@@ -401,7 +462,7 @@ class FlagType(EnumType):
 
     def enum_missing(self: Type[F], value: int) -> F:
         if not is_int(value):
-            raise ValueError(INVALID_VALUE.format(repr(value), get_name(self)))
+            raise ValueError(INVALID_VALUE.format(repr(value), tick(get_name(self))))
 
         flag_mask = self._flag_mask
         all_bits = self._full_mask
@@ -422,7 +483,7 @@ class FlagType(EnumType):
 
                 raise ValueError(
                     INVALID_BITS.format(
-                        value, get_name(self), bin(value, bits), bin(flag_mask, bits)
+                        value, tick(get_name(self)), bin(value, bits), bin(flag_mask, bits)
                     )
                 )
 
