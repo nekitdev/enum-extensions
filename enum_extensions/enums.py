@@ -629,12 +629,8 @@ class EnumType(type):
             if data_method is not None and data_method is type_method:
                 set_attribute(new_enum_type, name, enum_method)
 
-        if unknown is None:
-            unknown = get_attribute(new_enum_type, UNKNOWN_PRIVATE, False)
-
         # add information
         new_enum_type._flag = flag
-        new_enum_type._unknown = unknown
         new_enum_type._start = namespace.start
         new_enum_type._member_names = []
         new_enum_type._member_values = []
@@ -645,6 +641,11 @@ class EnumType(type):
         # add mappings
         new_enum_type._member_mapping = {}  # name -> member
         new_enum_type._value_mapping = {}  # value -> member (if hashable)
+
+        if unknown is None:
+            unknown = get_attribute(new_enum_type, UNKNOWN_PRIVATE, False)
+
+        new_enum_type._unknown = unknown
 
         # save dynamic attributes to know if we an take the shortcut of
         # storing members in the type dict
