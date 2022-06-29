@@ -1,9 +1,10 @@
 from types import DynamicClassAttribute as dynamic_attribute
 from typing import Any, ClassVar, Set, TypeVar
+from typing_extensions import TypedDict
 
 from enum_extensions.typing import is_same_type
 
-__all__ = ("Trait", "FormatTrait", "OrderTrait", "TitleTrait")
+__all__ = ("Trait", "FormatTrait", "JSONTrait", "OrderTrait", "TitleTrait")
 
 T = TypeVar("T", bound="Trait")
 
@@ -17,6 +18,16 @@ class Trait:
 class FormatTrait(Trait):
     def __format__(self, specification: str) -> str:
         return str(self).__format__(specification)
+
+
+class EnumJSONDict(TypedDict):
+    name: str
+    value: Any
+
+
+class JSONTrait(Trait):
+    def __json__(self) -> EnumJSONDict:
+        return EnumJSONDict(name=self.name, value=self.value)
 
 
 class OrderTrait(Trait):

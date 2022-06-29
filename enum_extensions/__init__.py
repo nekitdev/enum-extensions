@@ -64,7 +64,7 @@ from enum_extensions.flags import (
     is_flag_member,
 )
 from enum_extensions.members import Member, NonMember, is_member, is_non_member, member, non_member
-from enum_extensions.traits import FormatTrait, OrderTrait, TitleTrait, Trait
+from enum_extensions.traits import FormatTrait, JSONTrait, OrderTrait, TitleTrait, Trait
 
 __all__ = (
     "Auto",
@@ -94,6 +94,7 @@ __all__ = (
     "is_member",
     "is_non_member",
     "FormatTrait",
+    "JSONTrait",
     "OrderTrait",
     "TitleTrait",
     "Trait",
