@@ -419,25 +419,99 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../advanced/" class="md-nav__link">
-        Advanced
+      <a href="../reference/auto/" class="md-nav__link">
+        Auto
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
-        Reference
+      <a href="../reference/members/" class="md-nav__link">
+        Members
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/enums/" class="md-nav__link">
+        Enums
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/flags/" class="md-nav__link">
+        Flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/traits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -637,9 +711,9 @@ which are mainly omitted for simplicity:</p>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div>
-<p>Similar to the standard <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#module-enum"><code>enum</code></a> module, <a class="autorefs autorefs-internal" href="../reference/#enum_extensions"><code>enum-extensions</code></a>
-has an <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.auto.Auto"><code>Auto</code></a> type and
-an <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.auto.auto"><code>auto</code></a> function:</p>
+<p>Similar to the standard <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/enum.html#module-enum"><code>enum</code></a> module, <code>enum-extensions</code>
+has an <a class="autorefs autorefs-internal" href="../reference/auto/#enum_extensions.auto.Auto"><code>Auto</code></a> type and
+an <a class="autorefs autorefs-internal" href="../reference/auto/#enum_extensions.auto.auto"><code>auto</code></a> function:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">RED</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">GREEN</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
@@ -657,7 +731,7 @@ an <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.aut
 <p>You can also use keyword arguments in order to define members:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Color</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">RED</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">GREEN</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">BLUE</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p>Same with <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.auto.auto"><code>auto</code></a>, of course:</p>
+<p>Same with <a class="autorefs autorefs-internal" href="../reference/auto/#enum_extensions.auto.auto"><code>auto</code></a>, of course:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Color</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">(</span><span class="s2">&quot;Color&quot;</span><span class="p">,</span> <span class="n">RED</span><span class="o">=</span><span class="n">auto</span><span class="p">(),</span> <span class="n">GREEN</span><span class="o">=</span><span class="n">auto</span><span class="p">(),</span> <span class="n">BLUE</span><span class="o">=</span><span class="n">auto</span><span class="p">())</span>
 </code></pre></div>
 <p>All code snippets above produce <code>Color</code> enumeration in the end, which has the following members:</p>
@@ -666,15 +740,15 @@ an <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.aut
 <li><code>&lt;Color.GREEN: 2&gt;</code></li>
 <li><code>&lt;Color.BLUE: 3&gt;</code></li>
 </ul>
-<p>See <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.create"><code>Enum.create</code></a> documentation
+<p>See <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.create"><code>Enum.create</code></a> documentation
 for more details on creation API.</p>
 <h2 id="member-attributes">Member Attributes</h2>
 <p>Enumeration members have several useful attributes:</p>
 <ul>
-<li><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum.name"><code>name</code></a>, which represents their actual name;</li>
-<li><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum.value"><code>value</code></a>, which contains their value;</li>
-<li><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum.title_name"><code>title_name</code></a>, which is a more
-  human-readable version of their <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum.name"><code>name</code></a>.</li>
+<li><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum.name"><code>name</code></a>, which represents their actual name;</li>
+<li><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum.value"><code>value</code></a>, which contains their value;</li>
+<li><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum.title_name"><code>title_name</code></a>, which is a more
+  human-readable version of their <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum.name"><code>name</code></a>.</li>
 </ul>
 <h2 id="member-access">Member Access</h2>
 <p>Consider the following enumeration:</p>
@@ -694,14 +768,14 @@ for more details on creation API.</p>
 </code></pre></div>
 <h2 id="advanced-access">Advanced Access</h2>
 <p>Enumeration members can be accessed with case insensitive strings
-(via <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a>):</p>
+(via <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">TEST</span> <span class="o">=</span> <span class="mi">13</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">test</span> <span class="o">=</span> <span class="n">Test</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>  <span class="c1"># &lt;Test.TEST: 13&gt;</span>
 </code></pre></div>
 <p><strong>Note that if two members have same case insensitive name version, last in wins!</strong></p>
-<p><em>Also keep in mind <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a></em>
+<p><em>Also keep in mind <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a></em>
 <em>will not work with composite flags!</em></p>
 <p>Non-existent names raise a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#KeyError"><code>KeyError</code></a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">Test</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;unknown&quot;</span><span class="p">)</span>
@@ -710,7 +784,7 @@ for more details on creation API.</p>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  <span class="o">...</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="ne">KeyError</span><span class="p">:</span> <span class="s2">&quot;unknown&quot;</span>
 </code></pre></div>
-<p>There is also <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_value"><code>Enum.from_value</code></a>,
+<p>There is also <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_value"><code>Enum.from_value</code></a>,
 which can be used to lookup members by value, optionally defaulting to some value:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">TEST</span> <span class="o">=</span> <span class="mi">25</span>
@@ -725,11 +799,11 @@ which can be used to lookup members by value, optionally defaulting to some valu
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  <span class="o">...</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="ne">ValueError</span><span class="p">:</span> <span class="mi">42</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">valid</span> <span class="err">`</span><span class="n">Test</span><span class="err">`</span>
 </code></pre></div>
-<p><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_data"><code>Enum.from_data</code></a> is used to
+<p><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_data"><code>Enum.from_data</code></a> is used to
 find members either by name or by value with an optional default.
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a> is called if given a string,
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a> is called if given a string,
 and otherwise (including on failure),
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.from_value"><code>Enum.from_value</code></a> is applied with <code>default</code>:</p>
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_value"><code>Enum.from_value</code></a> is applied with <code>default</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">TEST</span> <span class="o">=</span> <span class="mi">42</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
@@ -842,8 +916,8 @@ are interpreted as values passed to <a class="autorefs autorefs-external" href="
 <a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="ne">AttributeError</span><span class="p">:</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">reassign</span> <span class="n">enum</span> <span class="n">member</span><span class="p">:</span> <span class="err">`</span><span class="n">BLUE</span><span class="err">`</span>
 </code></pre></div>
 <p>However, new members can be added to an enumeration via
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.add_member"><code>Enum.add_member</code></a> or
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.EnumType.update"><code>Enum.update</code></a> methods:</p>
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.add_member"><code>Enum.add_member</code></a> or
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.update"><code>Enum.update</code></a> methods:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">Color</span><span class="o">.</span><span class="n">add_member</span><span class="p">(</span><span class="s2">&quot;BLACK&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="o">&lt;</span><span class="n">Color</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">Color</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">WHITE</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -851,9 +925,9 @@ are interpreted as values passed to <a class="autorefs autorefs-external" href="
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="p">(</span><span class="o">&lt;</span><span class="n">Color</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span> <span class="mi">4</span><span class="o">&gt;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="string-enumeration">String Enumeration</h2>
-<p><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.StringEnum"><code>StringEnum</code></a> is a simple type derived from
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum"><code>Enum</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>, which only affects
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.enum_generate_next_value"><code>enum_generate_next_value</code></a> by
+<p><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.StringEnum"><code>StringEnum</code></a> is a simple type derived from
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum"><code>Enum</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str"><code>str</code></a>, which only affects
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.enum_generate_next_value"><code>enum_generate_next_value</code></a> by
 making it use the case-folded version of the member name:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">StringEnum</span><span class="p">):</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">OK</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
@@ -864,8 +938,8 @@ making it use the case-folded version of the member name:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">title</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">OK</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>  <span class="c1"># Ok</span>
 </code></pre></div>
 <h2 id="integer-enumeration">Integer Enumeration</h2>
-<p><a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.IntEnum"><code>IntEnum</code></a> is an enumeration derived from
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.enums.Enum"><code>Enum</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a>, which allows its members to act as integers:</p>
+<p><a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.IntEnum"><code>IntEnum</code></a> is an enumeration derived from
+<a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.Enum"><code>Enum</code></a> and <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a>, which allows its members to act as integers:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
@@ -876,11 +950,11 @@ making it use the case-folded version of the member name:</p>
 </code></pre></div>
 <p>Note how members also lose their membership when <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> operations are applied.</p>
 <h2 id="enforcing-non-members">Enforcing (Non-)Members</h2>
-<p>One can combine <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.Member"><code>Member</code></a> and
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.NonMember"><code>NonMember</code></a> types to force members to be included or excluded
-via <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.member"><code>member</code></a> and
-<a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.non_member"><code>non_member</code></a> functions, respectively.</p>
-<p>Using <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.member"><code>member</code></a> to enforce membership:</p>
+<p>One can combine <a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.Member"><code>Member</code></a> and
+<a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.NonMember"><code>NonMember</code></a> types to force members to be included or excluded
+via <a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.member"><code>member</code></a> and
+<a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.non_member"><code>non_member</code></a> functions, respectively.</p>
+<p>Using <a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.member"><code>member</code></a> to enforce membership:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="k">return</span> <span class="n">item</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
@@ -892,7 +966,7 @@ via <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.me
 <p>Removing the call above changes the behavior:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">function</span> <span class="o">=</span> <span class="n">Function</span><span class="o">.</span><span class="n">IDENTITY</span>  <span class="c1"># &lt;function identity at ...&gt;</span>
 </code></pre></div>
-<p>Applying <a class="autorefs autorefs-internal" href="../reference/#enum_extensions.members.non_member"><code>non_member</code></a> to protect items from becoming members:</p>
+<p>Applying <a class="autorefs autorefs-internal" href="../reference/members/#enum_extensions.members.non_member"><code>non_member</code></a> to protect items from becoming members:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="n">TEST</span> <span class="o">=</span> <span class="n">non_member</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
