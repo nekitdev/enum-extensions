@@ -489,7 +489,7 @@ class EnumType(type):
     """Metaclass for [`Enum`][enum_extensions.enums.Enum].
 
     [`EnumType`][enum_extensions.enums.EnumType] is responsible for setting
-    the correct methods on the final *enumeration*, as well as creating the *members*,
+    the correct methods on the final *enumeration*, as well as creating its *members*,
     properly handling duplicates, providing iteration over the enumeration members, etc.
     """
 
@@ -1162,7 +1162,7 @@ class EnumType(type):
         return {case_fold_name(name): member for name, member in self._member_mapping.items()}
 
     def from_name(self: Type[E], name: str) -> E:
-        """Finds a member by name case insensitively.
+        """Finds a member by name *case-insensitively*.
 
         Example:
             ```python
@@ -1173,7 +1173,7 @@ class EnumType(type):
             ```
 
         Arguments:
-            name: The CI (case insensetive) name to look up.
+            name: The name to look up.
 
         Raises:
             KeyError: Member is not found.

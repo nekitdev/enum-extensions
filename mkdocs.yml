@@ -12,8 +12,14 @@ nav:
   - Enums: "enums.md"
   - Flags: "flags.md"
   - Traits: "traits.md"
-  - Advanced: "advanced.md"
-  - Reference: "reference.md"
+
+  - Reference:
+    - Auto: "reference/auto.md"
+    - Members: "reference/members.md"
+    - Enums: "reference/enums.md"
+    - Flags: "reference/flags.md"
+    - Traits: "reference/traits.md"
+
   - Changelog: "changelog.md"
   - Security: "security.md"
 

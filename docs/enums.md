@@ -38,7 +38,7 @@ class Color(Enum):
     BLUE = 3
 ```
 
-Similar to the standard [`enum`][enum] module, [`enum-extensions`][enum_extensions]
+Similar to the standard [`enum`][enum] module, `enum-extensions`
 has an [`Auto`][enum_extensions.auto.Auto] type and
 an [`auto`][enum_extensions.auto.auto] function:
 
