@@ -1,6 +1,6 @@
 """Enhanced enumerations for Python.
 
-# Example
+## Example
 
 ```python
 # color.py
@@ -65,6 +65,7 @@ from enum_extensions.flags import (
 )
 from enum_extensions.members import Member, NonMember, is_member, is_non_member, member, non_member
 from enum_extensions.traits import FormatTrait, JSONTrait, OrderTrait, TitleTrait, Trait
+from enum_extensions.unique import unique
 
 __all__ = (
     "Auto",
@@ -98,4 +99,5 @@ __all__ = (
     "OrderTrait",
     "TitleTrait",
     "Trait",
+    "unique",
 )
