@@ -306,6 +306,7 @@ class FlagType(EnumType):
 
         Raises:
             ValueError: The member was not found.
+            ValueError: The name is already used by another member.
 
         Returns:
             A newly created [`Flag`][enum_extensions.flags.Flag] type or a member found.
@@ -360,6 +361,9 @@ class FlagType(EnumType):
             direct_call: Controls if the function is called directly or not.
                 This argument should be used with caution.
             **members: A `name -> value` mapping of [`Flag`][enum_extensions.flags.Flag] members.
+
+        Raises:
+            ValueError: The name is already used by another member.
 
         Returns:
             A newly created [`Flag`][enum_extensions.flags.Flag] type.
@@ -432,6 +436,19 @@ class FlagType(EnumType):
         return meta.__new__(meta, flag_name, bases, namespace, boundary=boundary)
 
     def __repr__(self) -> str:
+        """Returns the string used by [`repr`][repr] calls.
+
+        By default contains the [`Flag`][enum_extensions.flags.Flag] name.
+
+        Example:
+            ```python
+            >>> Permission
+            <flag `Permission`>
+            ```
+
+        Returns:
+            The string used in the [`repr`][repr] function.
+        """
         return FLAG_REPRESENTATION.format(tick(get_name(self)))
 
     def _iter_member_by_value(self: Type[F], value: int) -> Iterator[F]:
@@ -461,6 +478,18 @@ class FlagType(EnumType):
         return names, unknown
 
     def enum_missing(self: Type[F], value: int) -> F:
+        """Handles out-of-range `value` according to given boundary.
+
+        Arguments:
+            value: The out-of-range value to handle.
+
+        Raises:
+            ValueError: An invalid value was given.
+
+        Returns:
+            The matching flag member. See [`FlagBoundary`][enum_extensions.flags.FlagBoundary]
+            for more information.
+        """
         if not is_int(value):
             raise ValueError(INVALID_VALUE.format(repr(value), tick(get_name(self))))
 

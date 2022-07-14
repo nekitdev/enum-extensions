@@ -745,6 +745,7 @@ class EnumType(type):
 
         Raises:
             ValueError: The member was not found.
+            ValueError: The name is already used by another member.
 
         Returns:
             A newly created [`Enum`][enum_extensions.enums.Enum] type or a member found.
@@ -798,6 +799,9 @@ class EnumType(type):
             direct_call: Controls if the function is called directly or not.
                 Use this argument with caution.
             **members: A `name -> value` mapping of [`Enum`][enum_extensions.enums.Enum] members.
+
+        Raises:
+            ValueError: The name is already used by another member.
 
         Returns:
             A newly created [`Enum`][enum_extensions.enums.Enum] type.
@@ -1162,7 +1166,7 @@ class EnumType(type):
         return {case_fold_name(name): member for name, member in self._member_mapping.items()}
 
     def from_name(self: Type[E], name: str) -> E:
-        """Finds a member by name *case-insensitively*.
+        """Finds a member by name *case insensitively*.
 
         Example:
             ```python

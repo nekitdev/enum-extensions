@@ -38,7 +38,7 @@ typing-extensions = ">= 4.2.0"
 optional = true
 
 [tool.poetry.group.format.dependencies]
-black = "22.3.0"
+black = "22.6.0"
 
 [tool.poetry.group.format.dependencies.isort]
 version = "5.10.1"
@@ -99,7 +99,7 @@ exclude_lines = [
 directory = "coverage"
 
 [tool.mypy]
-plugins = ["enum_extensions.plugins.mypy"]
+# plugins = ["enum_extensions.plugins.mypy"]
 
 show_column_numbers = true
 

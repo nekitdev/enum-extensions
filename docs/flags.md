@@ -29,5 +29,5 @@ F = TypeVar("F", bound=Flag)  # flag type variable
 
 [`FlagBoundary`][enum_extensions.flags.FlagBoundary] is an enumeration
 with the values `STRICT`, `CONFORM` and `KEEP` which allows for
-more fine-grained control over how invalid values are dealt with in
-[`Flag`][enum_extensions.flags.Flag] types.
+more fine-grained control over how *invalid* (or, rather, *out-of-range*)
+values are dealt with in [`Flag`][enum_extensions.flags.Flag] types.

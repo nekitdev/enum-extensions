@@ -19,6 +19,7 @@ nav:
     - Enums: "reference/enums.md"
     - Flags: "reference/flags.md"
     - Traits: "reference/traits.md"
+    - Unique: "reference/unique.md"
 
   - Changelog: "changelog.md"
   - Security: "security.md"

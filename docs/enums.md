@@ -128,7 +128,7 @@ blue = Color(3)  # <Color.BLUE: 3>
 
 ## Advanced Access
 
-Enumeration members can be accessed with case insensitive strings
+Enumeration members can be accessed with *case insensitive* strings
 (via [`Enum.from_name`][enum_extensions.enums.EnumType.from_name]):
 
 ```python
@@ -164,7 +164,7 @@ test = Test.from_value(25)  # <Test.TEST: 25>
 default = Test.from_value(42, 25)  # <Test.TEST: 25>
 ```
 
-Non-present values without fallback will to raise a [`ValueError`][ValueError]:
+Non-present values without defaults will to raise a [`ValueError`][ValueError]:
 
 ```python
 >>> Test.from_value(42)
@@ -275,7 +275,7 @@ False
 ## Initialization Arguments
 
 Enumeration members that have [`tuple`][tuple] values but do not subclass [`tuple`][tuple]
-are interpreted as values passed to [`__init__`][object.__init__] of their class:
+are interpreted as values passed to the [`__init__`][object.__init__] of their class:
 
 ```python
 from math import sqrt
