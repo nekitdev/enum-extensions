@@ -123,8 +123,7 @@ If you are interested in contributing to `enum-extensions`, make sure to take a 
 [Version Badge]: https://img.shields.io/pypi/v/enum-extensions
 [Downloads Badge]: https://img.shields.io/pypi/dm/enum-extensions
 
-[Documentation Badge]: https://img.shields.io/badge/docs-material-blue
-
+[Documentation Badge]: https://github.com/nekitdev/enum-extensions/workflows/docs/badge.svg
 [Check Badge]: https://github.com/nekitdev/enum-extensions/workflows/check/badge.svg
 [Test Badge]: https://github.com/nekitdev/enum-extensions/workflows/test/badge.svg
 [Coverage Badge]: https://codecov.io/gh/nekitdev/enum-extensions/branch/main/graph/badge.svg
