@@ -12,7 +12,7 @@
 [![Test][Test Badge]][Actions]
 [![Coverage][Coverage Badge]][Coverage]
 
-**Enhanced enumerations for Python.**
+> *Enhanced enumerations for Python.*
 
 ## Installing
 
