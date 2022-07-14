@@ -5,8 +5,10 @@
 [![Downloads][Downloads Badge]][Package]
 [![Discord][Discord Badge]][Discord]
 
-[![Documentation][Documentation Badge]][Documentation]
+<!--
 [![Check][Check Badge]][Actions]
+-->
+[![Documentation][Documentation Badge]][Documentation]
 [![Test][Test Badge]][Actions]
 [![Coverage][Coverage Badge]][Coverage]
 
