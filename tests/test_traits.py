@@ -2,7 +2,7 @@ import pytest
 
 from enum_extensions.enums import Enum, IntEnum
 from enum_extensions.members import non_member
-from enum_extensions.traits import FormatTrait, OrderTrait, TitleTrait
+from enum_extensions.traits import Format, Order, Title
 
 
 class Shade(Enum):
@@ -15,7 +15,7 @@ class IntShade(IntEnum):
     WHITE = 100
 
 
-class Order(OrderTrait, Enum):
+class Ordered(Order, Enum):
     BLACK = 0
     WHITE = 100
 
@@ -35,29 +35,29 @@ def test_no_order() -> None:
 
 
 def test_order() -> None:
-    assert Order.BLACK < Order.WHITE
-    assert Order.WHITE > Order.BLACK
-    assert Order.BLACK <= Order.BLACK
-    assert Order.WHITE >= Order.WHITE
+    assert Ordered.BLACK < Ordered.WHITE
+    assert Ordered.WHITE > Ordered.BLACK
+    assert Ordered.BLACK <= Ordered.BLACK
+    assert Ordered.WHITE >= Ordered.WHITE
 
 
-class OtherOrder(OrderTrait, Enum):
+class OtherOrdered(Order, Enum):
     BLACK = 0
     WHITE = 100
 
 
 def test_other_order() -> None:
     with pytest.raises(TypeError):
-        Order.BLACK < OtherOrder.WHITE
+        Ordered.BLACK < OtherOrdered.WHITE
 
     with pytest.raises(TypeError):
-        Order.WHITE > OtherOrder.BLACK
+        Ordered.WHITE > OtherOrdered.BLACK
 
     with pytest.raises(TypeError):
-        Order.BLACK <= OtherOrder.BLACK
+        Ordered.BLACK <= OtherOrdered.BLACK
 
     with pytest.raises(TypeError):
-        Order.WHITE >= OtherOrder.WHITE
+        Ordered.WHITE >= OtherOrdered.WHITE
 
 
 BLACK_NAME = "BLACK"
@@ -69,7 +69,7 @@ BLACK_TITLE = "Black"
 WHITE_TITLE = "White"
 
 
-class Title(TitleTrait, Enum):
+class Titled(Title, Enum):
     ABBREVIATIONS = non_member({BLACK_NAME, WHITE_NAME})
 
     BLACK = 0
@@ -83,10 +83,10 @@ def test_no_title() -> None:
 
 
 def test_title() -> None:
-    assert Title.BLACK.title_name == BLACK_NAME
-    assert Title.WHITE.title_name == WHITE_NAME
+    assert Titled.BLACK.title_name == BLACK_NAME
+    assert Titled.WHITE.title_name == WHITE_NAME
 
-    assert Title.GRAY.title_name == GRAY_TITLE
+    assert Titled.GRAY.title_name == GRAY_TITLE
 
 
 BLACK_INT_FORMAT = str(0)
@@ -95,11 +95,11 @@ WHITE_INT_FORMAT = str(100)
 BLACK_NORMAL_FORMAT = "Shade.BLACK"
 WHITE_NORMAL_FORMAT = "Shade.WHITE"
 
-BLACK_FORMAT = "Format.BLACK"
-WHITE_FORMAT = "Format.WHITE"
+BLACK_FORMAT = "Formatted.BLACK"
+WHITE_FORMAT = "Formatted.WHITE"
 
 
-class Format(FormatTrait, IntEnum):
+class Formatted(Format, IntEnum):
     BLACK = 0
     WHITE = 100
 
@@ -113,5 +113,5 @@ def test_no_format() -> None:
 
 
 def test_format() -> None:
-    assert format(Format.BLACK) == BLACK_FORMAT
-    assert format(Format.WHITE) == WHITE_FORMAT
+    assert format(Formatted.BLACK) == BLACK_FORMAT
+    assert format(Formatted.WHITE) == WHITE_FORMAT
