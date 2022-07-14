@@ -510,6 +510,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/unique/" class="md-nav__link">
+        Unique
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -767,7 +781,7 @@ for more details on creation API.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">blue</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># &lt;Color.BLUE: 3&gt;</span>
 </code></pre></div>
 <h2 id="advanced-access">Advanced Access</h2>
-<p>Enumeration members can be accessed with case insensitive strings
+<p>Enumeration members can be accessed with <em>case insensitive</em> strings
 (via <a class="autorefs autorefs-internal" href="../reference/enums/#enum_extensions.enums.EnumType.from_name"><code>Enum.from_name</code></a>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">TEST</span> <span class="o">=</span> <span class="mi">13</span>
@@ -792,7 +806,7 @@ which can be used to lookup members by value, optionally defaulting to some valu
 <a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">test</span> <span class="o">=</span> <span class="n">Test</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># &lt;Test.TEST: 25&gt;</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">default</span> <span class="o">=</span> <span class="n">Test</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>  <span class="c1"># &lt;Test.TEST: 25&gt;</span>
 </code></pre></div>
-<p>Non-present values without fallback will to raise a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError"><code>ValueError</code></a>:</p>
+<p>Non-present values without defaults will to raise a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError"><code>ValueError</code></a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">Test</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
@@ -875,7 +889,7 @@ and otherwise (including on failure),
 </code></pre></div>
 <h2 id="initialization-arguments">Initialization Arguments</h2>
 <p>Enumeration members that have <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a> values but do not subclass <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple"><code>tuple</code></a>
-are interpreted as values passed to <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/datamodel.html#object.__init__"><code>__init__</code></a> of their class:</p>
+are interpreted as values passed to the <a class="autorefs autorefs-external" href="https://docs.python.org/3/reference/datamodel.html#object.__init__"><code>__init__</code></a> of their class:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>

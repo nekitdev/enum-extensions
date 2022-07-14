@@ -17,7 +17,7 @@
     
     
       
-        <title>Traits - enum-extensions</title>
+        <title>Unique - enum-extensions</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum_extensions.traits" class="md-skip">
+        <a href="#enum_extensions.unique" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Traits
+              Unique
             
           </span>
         </div>
@@ -377,6 +377,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../traits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -387,12 +401,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Traits
+          Unique
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Traits
+        Unique
       </a>
       
         
@@ -409,36 +423,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enum_extensions.traits" class="md-nav__link">
-    enum_extensions.traits
+  <a href="#enum_extensions.unique" class="md-nav__link">
+    enum_extensions.unique
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Trait" class="md-nav__link">
-    Trait
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Format" class="md-nav__link">
-    Format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Order" class="md-nav__link">
-    Order
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Title" class="md-nav__link">
-    Title
+  <a href="#enum_extensions.unique.unique" class="md-nav__link">
+    unique()
   </a>
   
 </li>
@@ -447,20 +440,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../unique/" class="md-nav__link">
-        Unique
-      </a>
     </li>
   
 
@@ -527,36 +506,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enum_extensions.traits" class="md-nav__link">
-    enum_extensions.traits
+  <a href="#enum_extensions.unique" class="md-nav__link">
+    enum_extensions.unique
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Trait" class="md-nav__link">
-    Trait
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Format" class="md-nav__link">
-    Format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Order" class="md-nav__link">
-    Order
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enum_extensions.traits.Title" class="md-nav__link">
-    Title
+  <a href="#enum_extensions.unique.unique" class="md-nav__link">
+    unique()
   </a>
   
 </li>
@@ -573,18 +531,18 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/nekitdev/enum-extensions/edit/master/docs/reference/traits.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/nekitdev/enum-extensions/edit/master/docs/reference/unique.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-  <h1>Traits</h1>
+  <h1>Unique</h1>
 
 <div class="doc doc-object doc-module">
 
 
-<a id="enum_extensions.traits"></a>
+<a id="enum_extensions.unique"></a>
   <div class="doc doc-contents first">
 
   
@@ -598,134 +556,106 @@
 
 
 
-<div class="doc doc-object doc-class">
+
+<div class="doc doc-object doc-function">
 
 
 
-<h2 id="enum_extensions.traits.Trait" class="doc doc-heading">
-        <code>Trait</code>
-
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-
-  
-      <p>Base type to derive traits from.</p>
-
-
-        <details class="quote">
-          <summary>Source code in <code>enum_extensions/traits.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">class</span> <span class="nc">Trait</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="sd">&quot;&quot;&quot;Base type to derive traits from.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">title_name</span><span class="p">:</span> <span class="nb">str</span>
-</code></pre></div></td></tr></table></div>
-        </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="enum_extensions.traits.Format" class="doc doc-heading">
-        <code>Format</code>
-
+<h2 id="enum_extensions.unique.unique" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">unique</span><span class="p">(</span><span class="n">enum</span><span class="p">)</span></code>
 
 </h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="enum_extensions.traits.Trait" href="#enum_extensions.traits.Trait">Trait</a></code></p>
-
   
-      <p>Enforces enumeration string formatting.</p>
+      <p>Ensures that the enumeration does not have aliases.</p>
 
+<details class="example">
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">enum_extensions</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">unique</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nd">@unique</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">RED</span><span class="p">,</span> <span class="n">GREEN</span><span class="p">,</span> <span class="n">BLUE</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="o">...</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="ne">ValueError</span><span class="p">:</span> <span class="n">aliases</span> <span class="n">found</span> <span class="ow">in</span> <span class="err">`</span><span class="n">Color</span><span class="err">`</span><span class="p">:</span> <span class="err">`</span><span class="n">R</span><span class="err">`</span> <span class="o">-&gt;</span> <span class="err">`</span><span class="n">RED</span><span class="err">`</span><span class="p">,</span> <span class="err">`</span><span class="n">G</span><span class="err">`</span> <span class="o">-&gt;</span> <span class="err">`</span><span class="n">GREEN</span><span class="err">`</span><span class="p">,</span> <span class="err">`</span><span class="n">B</span><span class="err">`</span> <span class="o">-&gt;</span> <span class="err">`</span><span class="n">BLUE</span><span class="err">`</span>
+</code></pre></div>
+</details>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>enum</code></td>
+          <td>
+                <code><span title="enum_extensions.unique.ET">ET</span></code>
+          </td>
+          <td><p>The enumeration to check.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-        <details class="quote">
-          <summary>Source code in <code>enum_extensions/traits.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+  <p><strong>Raises:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></code>
+          </td>
+          <td><p>Aliases were found.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><span title="enum_extensions.unique.ET">ET</span></code>
+          </td>
+          <td><p>The enumeration checked.</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>enum_extensions/unique.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-20">20</a></span>
 <span class="normal"><a href="#__codelineno-0-21">21</a></span>
 <span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">class</span> <span class="nc">Format</span><span class="p">(</span><span class="n">Trait</span><span class="p">):</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="sd">&quot;&quot;&quot;Enforces enumeration string formatting.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specification</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__format__</span><span class="p">(</span><span class="n">specification</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-        </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="enum_extensions.traits.Order" class="doc doc-heading">
-        <code>Order</code>
-
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="enum_extensions.traits.Trait" href="#enum_extensions.traits.Trait">Trait</a></code></p>
-
-  
-      <p>Implements ordering for enumerations.</p>
-
-
-        <details class="quote">
-          <summary>Source code in <code>enum_extensions/traits.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
 <span class="normal"><a href="#__codelineno-0-27">27</a></span>
 <span class="normal"><a href="#__codelineno-0-28">28</a></span>
 <span class="normal"><a href="#__codelineno-0-29">29</a></span>
@@ -750,124 +680,55 @@
 <span class="normal"><a href="#__codelineno-0-48">48</a></span>
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
 <span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="k">class</span> <span class="nc">Order</span><span class="p">(</span><span class="n">Trait</span><span class="p">):</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>    <span class="sd">&quot;&quot;&quot;Implements ordering for enumerations.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a>        <span class="k">if</span> <span class="n">is_same_type</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>        <span class="k">if</span> <span class="n">is_same_type</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="k">if</span> <span class="n">is_same_type</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>        <span class="k">if</span> <span class="n">is_same_type</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a>        <span class="k">return</span> <span class="bp">NotImplemented</span>
-</code></pre></div></td></tr></table></div>
-        </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="enum_extensions.traits.Title" class="doc doc-heading">
-        <code>Title</code>
-
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="enum_extensions.traits.Trait" href="#enum_extensions.traits.Trait">Trait</a></code></p>
-
-  
-      <p>Allows handling abbreviations in titles.</p>
-
-
-        <details class="quote">
-          <summary>Source code in <code>enum_extensions/traits.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
 <span class="normal"><a href="#__codelineno-0-55">55</a></span>
 <span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span>
-<span class="normal"><a href="#__codelineno-0-59">59</a></span>
-<span class="normal"><a href="#__codelineno-0-60">60</a></span>
-<span class="normal"><a href="#__codelineno-0-61">61</a></span>
-<span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span>
-<span class="normal"><a href="#__codelineno-0-65">65</a></span>
-<span class="normal"><a href="#__codelineno-0-66">66</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="k">class</span> <span class="nc">Title</span><span class="p">(</span><span class="n">Trait</span><span class="p">):</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="sd">&quot;&quot;&quot;Allows handling abbreviations in titles.&quot;&quot;&quot;</span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="k">def</span> <span class="nf">unique</span><span class="p">(</span><span class="n">enum</span><span class="p">:</span> <span class="n">ET</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="p">:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="sd">&quot;&quot;&quot;Ensures that the enumeration does not have aliases.</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        ```python</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        from enum_extensions import Enum, unique</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        @unique</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        class Color(Enum):</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">            RED = 1</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">            GREEN = 2</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">            BLUE = 3</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">            R, G, B = RED, GREEN, BLUE</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">        ```</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        ```python</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        Traceback (most recent call last):</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">          ...</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        ValueError: aliases found in `Color`: `R` -&gt; `RED`, `G` -&gt; `GREEN`, `B` -&gt; `BLUE`</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">        ```</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">    Arguments:</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        enum: The enumeration to check.</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">        ValueError: Aliases were found.</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        The enumeration checked.</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="n">duplicates</span> <span class="o">=</span> <span class="n">concat_comma_space</span><span class="p">(</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>        <span class="n">maps</span><span class="p">(</span><span class="n">tick</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">tick</span><span class="p">(</span><span class="n">member_name</span><span class="p">))</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">member_name</span> <span class="ow">in</span> <span class="n">find_duplicates</span><span class="p">(</span><span class="n">enum</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="k">if</span> <span class="n">duplicates</span><span class="p">:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ALIASES_FOUND</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tick</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="n">enum</span><span class="p">)),</span> <span class="n">duplicates</span><span class="p">))</span>
 <a id="__codelineno-0-56" name="__codelineno-0-56"></a>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="n">ABBREVIATIONS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">def</span> <span class="nf">title_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ABBREVIATIONS</span><span class="p">:</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>            <span class="k">return</span> <span class="n">name</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">title_name</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="k">return</span> <span class="n">enum</span>
 </code></pre></div></td></tr></table></div>
-        </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
+      </details>
   </div>
 
 </div>
-
 
 
 
@@ -891,7 +752,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../flags/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Flags" rel="prev">
+        <a href="../traits/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Traits" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -900,20 +761,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Flags
+              Traits
             </div>
           </div>
         </a>
       
       
         
-        <a href="../unique/" class="md-footer__link md-footer__link--next" aria-label="Next: Unique" rel="next">
+        <a href="../../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Unique
+              Changelog
             </div>
           </div>
           <div class="md-footer__button md-icon">
