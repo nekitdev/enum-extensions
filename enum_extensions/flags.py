@@ -59,12 +59,12 @@ FlagT = TypeVar("FlagT", bound="Flag")
 
 
 class FlagBoundary(StringEnum):
-    """Controls how out-of-range values are handled in
+    """Controls how *out-of-range* values are handled in
     [`Flag`][enum_extensions.flags.Flag] types.
     """
 
     STRICT = auto()
-    """Out-of-range values cause a [`ValueError`][ValueError] to be raised.
+    """*Out-of-range* values cause [`ValueError`][ValueError].
     This is the default for [`Flag`][enum_extensions.flags.Flag].
 
     Example:
@@ -82,14 +82,14 @@ class FlagBoundary(StringEnum):
 
         Traceback (most recent call last):
           ...
-        ValueError: invalid value 20 in `StrictFlag`:
+        ValueError: invalid value 0x14 in `StrictFlag`:
             given 0b0 10100
           allowed 0b0 00111
         ```
     """
 
     CONFORM = auto()
-    """Out-of-range values have invalid values removed, leaving a valid
+    """*Out-of-range* values have invalid values removed, leaving a valid
     [`Flag`][enum_extensions.flags.Flag] member.
 
     Example:
@@ -109,7 +109,8 @@ class FlagBoundary(StringEnum):
     """
 
     KEEP = auto()
-    """Out-of-range values are kept along with the [`Flag`][enum_extensions.flags.Flag] membership.
+    """*Out-of-range* values are kept along with the
+    [`Flag`][enum_extensions.flags.Flag] membership.
     This is the default for [`IntFlag`][enum_extensions.flags.IntFlag].
 
     Example:
@@ -234,7 +235,7 @@ class FlagType(EnumType):
             missed = multi_bit_total & ~single_bit_total
 
             if missed:
-                raise TypeError(INVALID_FLAG.format(tick(get_name(self)), missed))
+                raise TypeError(INVALID_FLAG.format(tick(get_name(self)), hex(missed)))
 
         self._flag_mask = single_bit_total
 
@@ -478,10 +479,10 @@ class FlagType(EnumType):
         return names, unknown
 
     def enum_missing(self: Type[F], value: int) -> F:
-        """Handles out-of-range `value` according to given boundary.
+        """Handles *out-of-range* `value` according to given boundary.
 
         Arguments:
-            value: The out-of-range value to handle.
+            value: The value to handle.
 
         Raises:
             ValueError: An invalid value was given.
@@ -512,7 +513,7 @@ class FlagType(EnumType):
 
                 raise ValueError(
                     INVALID_BITS.format(
-                        value, tick(get_name(self)), bin(value, bits), bin(flag_mask, bits)
+                        hex(value), tick(get_name(self)), bin(value, bits), bin(flag_mask, bits)
                     )
                 )
 
@@ -553,7 +554,7 @@ class FlagType(EnumType):
                 W = 2
                 X = 1
 
-            permission = Permission.add_member("Z", 0)  # <Perm.Z: 0>
+            permission = Permission.add_member("N", 0)  # <Perm.N: 0>
             ```
 
         Arguments:
@@ -722,10 +723,13 @@ class Flag(Enum, metaclass=FlagType):
 
         return is_same_type(flag, self) and flag_value & self_value == flag_value
 
+    def has(self: FlagT, flag: FlagT) -> bool:
+        return flag in self
+
     def __repr__(self) -> str:
         """Returns the string used by [`repr`][repr] calls.
 
-        By default contains the [`Flag`][enum_extensions.flags.Flag] name along with
+        By default contains the [`Flag`][enum_extensions.flags.Flag] name along with the
         (composite) member name and value.
 
         Example:
@@ -744,7 +748,7 @@ class Flag(Enum, metaclass=FlagType):
     def __str__(self) -> str:
         """Returns the string used by [`str`][str] calls.
 
-        By default contains the [`Flag`][enum_extensions.flags.Flag] name along with
+        By default contains the [`Flag`][enum_extensions.flags.Flag] name along with the
         (composite) member name.
 
         Example:
@@ -763,7 +767,7 @@ class Flag(Enum, metaclass=FlagType):
 
         Example:
             ```python
-            >>> len(Permission.Z)
+            >>> len(Permission.N)
             0
 
             >>> len(Permission.R | Permission.W | Permission.X)
@@ -809,7 +813,7 @@ class Flag(Enum, metaclass=FlagType):
         Example:
             ```python
             >>> Permission.X & (Permission.R | Permission.W)
-            <Permission.Z: 0>
+            <Permission.N: 0>
             ```
 
         Arguments:
@@ -850,7 +854,7 @@ class Flag(Enum, metaclass=FlagType):
 
         Example:
             ```python
-            >>> ~Permission.Z
+            >>> ~Permission.N
             <Permission.R|W|X: 7>
             ```
 
@@ -948,9 +952,9 @@ class IntFlag(int, Flag, boundary=KEEP):
 
         Example:
             ```python
-            IntPermission = IntFlag("IntPermission", R=4, W=2, X=1, Z=0)
+            IntPermission = IntFlag("IntPermission", R=4, W=2, X=1, N=0)
 
-            r, w, x, z = IntPermission
+            r, w, x, n = IntPermission
 
             rx = r | x
 
@@ -973,6 +977,9 @@ class IntFlag(int, Flag, boundary=KEEP):
             other = type(self)(other)
 
         return super().__contains__(other)
+
+    def has(self: FlagT, other: Union[int, FlagT]) -> bool:
+        return other in self
 
     def __or__(self: FlagT, other: Union[int, FlagT]) -> FlagT:
         """Combines values (of flag members) via the `|` (*OR*) operation.
@@ -1003,7 +1010,7 @@ class IntFlag(int, Flag, boundary=KEEP):
         Example:
             ```python
             >>> IntPermission.W & (IntPermission.R | IntPermission.X)
-            <IntPermission.Z: 0>
+            <IntPermission.N: 0>
 
             >>> IntPermission.X & 1
             <IntPermission.X: 1>
@@ -1030,7 +1037,7 @@ class IntFlag(int, Flag, boundary=KEEP):
             <IntPermission.R|W: 6>
 
             >>> IntPermission.X ^ 1
-            <IntPermission.Z: 0>
+            <IntPermission.N: 0>
             ```
 
         Arguments:
