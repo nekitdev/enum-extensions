@@ -11,7 +11,7 @@ homepage = "https://github.com/nekitdev/enum-extensions"
 repository = "https://github.com/nekitdev/enum-extensions"
 documentation = "https://nekitdev.github.io/enum-extensions"
 
-keywords = ["python", "enum"]
+keywords = ["python", "enum", "extensions"]
 
 classifiers = [
     "Development Status :: 4 - Beta",
