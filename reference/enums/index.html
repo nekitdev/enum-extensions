@@ -5541,9 +5541,7 @@ attributes; see the documentation for details.</p>
 <span class="normal"><a href="#__codelineno-0-1484">1484</a></span>
 <span class="normal"><a href="#__codelineno-0-1485">1485</a></span>
 <span class="normal"><a href="#__codelineno-0-1486">1486</a></span>
-<span class="normal"><a href="#__codelineno-0-1487">1487</a></span>
-<span class="normal"><a href="#__codelineno-0-1488">1488</a></span>
-<span class="normal"><a href="#__codelineno-0-1489">1489</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1288" name="__codelineno-0-1288"></a><span class="k">class</span> <span class="nc">Enum</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">EnumType</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-1487">1487</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1288" name="__codelineno-0-1288"></a><span class="k">class</span> <span class="nc">Enum</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">EnumType</span><span class="p">):</span>
 <a id="__codelineno-0-1289" name="__codelineno-0-1289"></a>    <span class="sd">&quot;&quot;&quot;A collection of `name -&gt; value` pairs.</span>
 <a id="__codelineno-0-1290" name="__codelineno-0-1290"></a>
 <a id="__codelineno-0-1291" name="__codelineno-0-1291"></a><span class="sd">    Example enumeration:</span>
@@ -5620,131 +5618,129 @@ attributes; see the documentation for details.</p>
 <a id="__codelineno-0-1362" name="__codelineno-0-1362"></a>        <span class="k">try</span><span class="p">:</span>
 <a id="__codelineno-0-1363" name="__codelineno-0-1363"></a>            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_value_mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
 <a id="__codelineno-0-1364" name="__codelineno-0-1364"></a>
-<a id="__codelineno-0-1365" name="__codelineno-0-1365"></a>        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<a id="__codelineno-0-1366" name="__codelineno-0-1366"></a>            <span class="c1"># not found, no need to do O(n) search</span>
-<a id="__codelineno-0-1367" name="__codelineno-0-1367"></a>            <span class="k">pass</span>
-<a id="__codelineno-0-1368" name="__codelineno-0-1368"></a>
-<a id="__codelineno-0-1369" name="__codelineno-0-1369"></a>        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<a id="__codelineno-0-1370" name="__codelineno-0-1370"></a>            <span class="c1"># not hashable, then do long search, O(n) behavior</span>
-<a id="__codelineno-0-1371" name="__codelineno-0-1371"></a>            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_member_mapping</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-<a id="__codelineno-0-1372" name="__codelineno-0-1372"></a>                <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
-<a id="__codelineno-0-1373" name="__codelineno-0-1373"></a>                    <span class="k">return</span> <span class="n">member</span>
+<a id="__codelineno-0-1365" name="__codelineno-0-1365"></a>        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c1"># not found, no need to do O(n) search</span>
+<a id="__codelineno-0-1366" name="__codelineno-0-1366"></a>            <span class="k">pass</span>
+<a id="__codelineno-0-1367" name="__codelineno-0-1367"></a>
+<a id="__codelineno-0-1368" name="__codelineno-0-1368"></a>        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>  <span class="c1"># not hashable, then do long search, O(n) behavior</span>
+<a id="__codelineno-0-1369" name="__codelineno-0-1369"></a>            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_member_mapping</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<a id="__codelineno-0-1370" name="__codelineno-0-1370"></a>                <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-0-1371" name="__codelineno-0-1371"></a>                    <span class="k">return</span> <span class="n">member</span>
+<a id="__codelineno-0-1372" name="__codelineno-0-1372"></a>
+<a id="__codelineno-0-1373" name="__codelineno-0-1373"></a>        <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-0-1374" name="__codelineno-0-1374"></a>
-<a id="__codelineno-0-1375" name="__codelineno-0-1375"></a>        <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1376" name="__codelineno-0-1376"></a>
-<a id="__codelineno-0-1377" name="__codelineno-0-1377"></a>        <span class="c1"># still not found -&gt; try enum_missing hook</span>
-<a id="__codelineno-0-1378" name="__codelineno-0-1378"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-1379" name="__codelineno-0-1379"></a>            <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">enum_missing</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-1380" name="__codelineno-0-1380"></a>
-<a id="__codelineno-0-1381" name="__codelineno-0-1381"></a>        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<a id="__codelineno-0-1382" name="__codelineno-0-1382"></a>            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1383" name="__codelineno-0-1383"></a>
-<a id="__codelineno-0-1384" name="__codelineno-0-1384"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_happened</span><span class="p">:</span>
-<a id="__codelineno-0-1385" name="__codelineno-0-1385"></a>            <span class="n">error</span> <span class="o">=</span> <span class="n">error_happened</span>
-<a id="__codelineno-0-1386" name="__codelineno-0-1386"></a>            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1387" name="__codelineno-0-1387"></a>
-<a id="__codelineno-0-1388" name="__codelineno-0-1388"></a>        <span class="k">if</span> <span class="n">is_instance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-1389" name="__codelineno-0-1389"></a>            <span class="k">return</span> <span class="n">result</span>
-<a id="__codelineno-0-1390" name="__codelineno-0-1390"></a>
-<a id="__codelineno-0-1391" name="__codelineno-0-1391"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-1392" name="__codelineno-0-1392"></a>            <span class="n">error_invalid</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_VALUE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">tick</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">))))</span>
-<a id="__codelineno-0-1393" name="__codelineno-0-1393"></a>
-<a id="__codelineno-0-1394" name="__codelineno-0-1394"></a>            <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># no result, no error</span>
-<a id="__codelineno-0-1395" name="__codelineno-0-1395"></a>                <span class="k">raise</span> <span class="n">error_invalid</span>
-<a id="__codelineno-0-1396" name="__codelineno-0-1396"></a>
-<a id="__codelineno-0-1397" name="__codelineno-0-1397"></a>            <span class="k">if</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-1398" name="__codelineno-0-1398"></a>                <span class="n">error</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ENUM_MISSING_ERROR</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+<a id="__codelineno-0-1375" name="__codelineno-0-1375"></a>        <span class="c1"># still not found -&gt; try enum_missing hook</span>
+<a id="__codelineno-0-1376" name="__codelineno-0-1376"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-1377" name="__codelineno-0-1377"></a>            <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">enum_missing</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+<a id="__codelineno-0-1378" name="__codelineno-0-1378"></a>
+<a id="__codelineno-0-1379" name="__codelineno-0-1379"></a>        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-1380" name="__codelineno-0-1380"></a>            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-1381" name="__codelineno-0-1381"></a>
+<a id="__codelineno-0-1382" name="__codelineno-0-1382"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_happened</span><span class="p">:</span>
+<a id="__codelineno-0-1383" name="__codelineno-0-1383"></a>            <span class="n">error</span> <span class="o">=</span> <span class="n">error_happened</span>
+<a id="__codelineno-0-1384" name="__codelineno-0-1384"></a>            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-1385" name="__codelineno-0-1385"></a>
+<a id="__codelineno-0-1386" name="__codelineno-0-1386"></a>        <span class="k">if</span> <span class="n">is_instance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-1387" name="__codelineno-0-1387"></a>            <span class="k">return</span> <span class="n">result</span>
+<a id="__codelineno-0-1388" name="__codelineno-0-1388"></a>
+<a id="__codelineno-0-1389" name="__codelineno-0-1389"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-1390" name="__codelineno-0-1390"></a>            <span class="n">error_invalid</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_VALUE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">tick</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">))))</span>
+<a id="__codelineno-0-1391" name="__codelineno-0-1391"></a>
+<a id="__codelineno-0-1392" name="__codelineno-0-1392"></a>            <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># no result, no error</span>
+<a id="__codelineno-0-1393" name="__codelineno-0-1393"></a>                <span class="k">raise</span> <span class="n">error_invalid</span>
+<a id="__codelineno-0-1394" name="__codelineno-0-1394"></a>
+<a id="__codelineno-0-1395" name="__codelineno-0-1395"></a>            <span class="k">if</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-1396" name="__codelineno-0-1396"></a>                <span class="n">error</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ENUM_MISSING_ERROR</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+<a id="__codelineno-0-1397" name="__codelineno-0-1397"></a>
+<a id="__codelineno-0-1398" name="__codelineno-0-1398"></a>            <span class="k">raise</span> <span class="n">error_invalid</span> <span class="kn">from</span> <span class="nn">error</span>
 <a id="__codelineno-0-1399" name="__codelineno-0-1399"></a>
-<a id="__codelineno-0-1400" name="__codelineno-0-1400"></a>            <span class="k">raise</span> <span class="n">error_invalid</span> <span class="kn">from</span> <span class="nn">error</span>
-<a id="__codelineno-0-1401" name="__codelineno-0-1401"></a>
-<a id="__codelineno-0-1402" name="__codelineno-0-1402"></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1403" name="__codelineno-0-1403"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`repr`][repr] calls.</span>
-<a id="__codelineno-0-1404" name="__codelineno-0-1404"></a>
-<a id="__codelineno-0-1405" name="__codelineno-0-1405"></a><span class="sd">        By default contains the [`Enum`][enum_extensions.enums.Enum] name</span>
-<a id="__codelineno-0-1406" name="__codelineno-0-1406"></a><span class="sd">        along with member name and value.</span>
-<a id="__codelineno-0-1407" name="__codelineno-0-1407"></a>
-<a id="__codelineno-0-1408" name="__codelineno-0-1408"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-1409" name="__codelineno-0-1409"></a><span class="sd">            ```python</span>
-<a id="__codelineno-0-1410" name="__codelineno-0-1410"></a><span class="sd">            &gt;&gt;&gt; Color.BLUE</span>
-<a id="__codelineno-0-1411" name="__codelineno-0-1411"></a><span class="sd">            &lt;Color.BLUE: 3&gt;</span>
-<a id="__codelineno-0-1412" name="__codelineno-0-1412"></a><span class="sd">            ```</span>
-<a id="__codelineno-0-1413" name="__codelineno-0-1413"></a>
-<a id="__codelineno-0-1414" name="__codelineno-0-1414"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-1415" name="__codelineno-0-1415"></a><span class="sd">            The string used in the [`repr`][repr] function.</span>
-<a id="__codelineno-0-1416" name="__codelineno-0-1416"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1417" name="__codelineno-0-1417"></a>        <span class="k">return</span> <span class="n">ENUM_MEMBER_REPRESENTATION</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<a id="__codelineno-0-1418" name="__codelineno-0-1418"></a>            <span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
-<a id="__codelineno-0-1419" name="__codelineno-0-1419"></a>        <span class="p">)</span>
-<a id="__codelineno-0-1420" name="__codelineno-0-1420"></a>
-<a id="__codelineno-0-1421" name="__codelineno-0-1421"></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1422" name="__codelineno-0-1422"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`str`][str] calls.</span>
+<a id="__codelineno-0-1400" name="__codelineno-0-1400"></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1401" name="__codelineno-0-1401"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`repr`][repr] calls.</span>
+<a id="__codelineno-0-1402" name="__codelineno-0-1402"></a>
+<a id="__codelineno-0-1403" name="__codelineno-0-1403"></a><span class="sd">        By default contains the [`Enum`][enum_extensions.enums.Enum] name</span>
+<a id="__codelineno-0-1404" name="__codelineno-0-1404"></a><span class="sd">        along with member name and value.</span>
+<a id="__codelineno-0-1405" name="__codelineno-0-1405"></a>
+<a id="__codelineno-0-1406" name="__codelineno-0-1406"></a><span class="sd">        Example:</span>
+<a id="__codelineno-0-1407" name="__codelineno-0-1407"></a><span class="sd">            ```python</span>
+<a id="__codelineno-0-1408" name="__codelineno-0-1408"></a><span class="sd">            &gt;&gt;&gt; Color.BLUE</span>
+<a id="__codelineno-0-1409" name="__codelineno-0-1409"></a><span class="sd">            &lt;Color.BLUE: 3&gt;</span>
+<a id="__codelineno-0-1410" name="__codelineno-0-1410"></a><span class="sd">            ```</span>
+<a id="__codelineno-0-1411" name="__codelineno-0-1411"></a>
+<a id="__codelineno-0-1412" name="__codelineno-0-1412"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-1413" name="__codelineno-0-1413"></a><span class="sd">            The string used in the [`repr`][repr] function.</span>
+<a id="__codelineno-0-1414" name="__codelineno-0-1414"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1415" name="__codelineno-0-1415"></a>        <span class="k">return</span> <span class="n">ENUM_MEMBER_REPRESENTATION</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-0-1416" name="__codelineno-0-1416"></a>            <span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1417" name="__codelineno-0-1417"></a>        <span class="p">)</span>
+<a id="__codelineno-0-1418" name="__codelineno-0-1418"></a>
+<a id="__codelineno-0-1419" name="__codelineno-0-1419"></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1420" name="__codelineno-0-1420"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`str`][str] calls.</span>
+<a id="__codelineno-0-1421" name="__codelineno-0-1421"></a>
+<a id="__codelineno-0-1422" name="__codelineno-0-1422"></a><span class="sd">        By default contains the [`Enum`][enum_extensions.enums.Enum] name along with member name.</span>
 <a id="__codelineno-0-1423" name="__codelineno-0-1423"></a>
-<a id="__codelineno-0-1424" name="__codelineno-0-1424"></a><span class="sd">        By default contains the [`Enum`][enum_extensions.enums.Enum] name along with member name.</span>
-<a id="__codelineno-0-1425" name="__codelineno-0-1425"></a>
-<a id="__codelineno-0-1426" name="__codelineno-0-1426"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-1427" name="__codelineno-0-1427"></a><span class="sd">            ```python</span>
-<a id="__codelineno-0-1428" name="__codelineno-0-1428"></a><span class="sd">            &gt;&gt;&gt; print(Color.BLUE)</span>
-<a id="__codelineno-0-1429" name="__codelineno-0-1429"></a><span class="sd">            Color.BLUE</span>
-<a id="__codelineno-0-1430" name="__codelineno-0-1430"></a><span class="sd">            ```</span>
-<a id="__codelineno-0-1431" name="__codelineno-0-1431"></a>
-<a id="__codelineno-0-1432" name="__codelineno-0-1432"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-1433" name="__codelineno-0-1433"></a><span class="sd">            The string used in the [`str`][str] function.</span>
-<a id="__codelineno-0-1434" name="__codelineno-0-1434"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1435" name="__codelineno-0-1435"></a>        <span class="k">return</span> <span class="n">ENUM_MEMBER_STRING</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
-<a id="__codelineno-0-1436" name="__codelineno-0-1436"></a>
-<a id="__codelineno-0-1437" name="__codelineno-0-1437"></a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specification</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1438" name="__codelineno-0-1438"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`format`][format] calls and f-strings.</span>
+<a id="__codelineno-0-1424" name="__codelineno-0-1424"></a><span class="sd">        Example:</span>
+<a id="__codelineno-0-1425" name="__codelineno-0-1425"></a><span class="sd">            ```python</span>
+<a id="__codelineno-0-1426" name="__codelineno-0-1426"></a><span class="sd">            &gt;&gt;&gt; print(Color.BLUE)</span>
+<a id="__codelineno-0-1427" name="__codelineno-0-1427"></a><span class="sd">            Color.BLUE</span>
+<a id="__codelineno-0-1428" name="__codelineno-0-1428"></a><span class="sd">            ```</span>
+<a id="__codelineno-0-1429" name="__codelineno-0-1429"></a>
+<a id="__codelineno-0-1430" name="__codelineno-0-1430"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-1431" name="__codelineno-0-1431"></a><span class="sd">            The string used in the [`str`][str] function.</span>
+<a id="__codelineno-0-1432" name="__codelineno-0-1432"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1433" name="__codelineno-0-1433"></a>        <span class="k">return</span> <span class="n">ENUM_MEMBER_STRING</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
+<a id="__codelineno-0-1434" name="__codelineno-0-1434"></a>
+<a id="__codelineno-0-1435" name="__codelineno-0-1435"></a>    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specification</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1436" name="__codelineno-0-1436"></a>        <span class="sd">&quot;&quot;&quot;Returns the string used by [`format`][format] calls and f-strings.</span>
+<a id="__codelineno-0-1437" name="__codelineno-0-1437"></a>
+<a id="__codelineno-0-1438" name="__codelineno-0-1438"></a><span class="sd">        By default this function gives the same result as [`str`][str] does.</span>
 <a id="__codelineno-0-1439" name="__codelineno-0-1439"></a>
-<a id="__codelineno-0-1440" name="__codelineno-0-1440"></a><span class="sd">        By default this function gives the same result as [`str`][str] does.</span>
-<a id="__codelineno-0-1441" name="__codelineno-0-1441"></a>
-<a id="__codelineno-0-1442" name="__codelineno-0-1442"></a><span class="sd">        Example:</span>
-<a id="__codelineno-0-1443" name="__codelineno-0-1443"></a><span class="sd">            ```python</span>
-<a id="__codelineno-0-1444" name="__codelineno-0-1444"></a><span class="sd">            &gt;&gt;&gt; color = Color.RED</span>
-<a id="__codelineno-0-1445" name="__codelineno-0-1445"></a><span class="sd">            &gt;&gt;&gt; print(f&quot;{color}&quot;)</span>
-<a id="__codelineno-0-1446" name="__codelineno-0-1446"></a><span class="sd">            Color.RED</span>
-<a id="__codelineno-0-1447" name="__codelineno-0-1447"></a><span class="sd">            ```</span>
-<a id="__codelineno-0-1448" name="__codelineno-0-1448"></a>
-<a id="__codelineno-0-1449" name="__codelineno-0-1449"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-1450" name="__codelineno-0-1450"></a><span class="sd">            The string used in the [`format`][format] function and f-strings.</span>
-<a id="__codelineno-0-1451" name="__codelineno-0-1451"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1452" name="__codelineno-0-1452"></a>        <span class="n">data_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_type</span>
-<a id="__codelineno-0-1453" name="__codelineno-0-1453"></a>
-<a id="__codelineno-0-1454" name="__codelineno-0-1454"></a>        <span class="k">if</span> <span class="n">data_type</span> <span class="ow">is</span> <span class="nb">object</span><span class="p">:</span>
-<a id="__codelineno-0-1455" name="__codelineno-0-1455"></a>            <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="__codelineno-0-1456" name="__codelineno-0-1456"></a>
-<a id="__codelineno-0-1457" name="__codelineno-0-1457"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-1458" name="__codelineno-0-1458"></a>            <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">data_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1440" name="__codelineno-0-1440"></a><span class="sd">        Example:</span>
+<a id="__codelineno-0-1441" name="__codelineno-0-1441"></a><span class="sd">            ```python</span>
+<a id="__codelineno-0-1442" name="__codelineno-0-1442"></a><span class="sd">            &gt;&gt;&gt; color = Color.RED</span>
+<a id="__codelineno-0-1443" name="__codelineno-0-1443"></a><span class="sd">            &gt;&gt;&gt; print(f&quot;{color}&quot;)</span>
+<a id="__codelineno-0-1444" name="__codelineno-0-1444"></a><span class="sd">            Color.RED</span>
+<a id="__codelineno-0-1445" name="__codelineno-0-1445"></a><span class="sd">            ```</span>
+<a id="__codelineno-0-1446" name="__codelineno-0-1446"></a>
+<a id="__codelineno-0-1447" name="__codelineno-0-1447"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-1448" name="__codelineno-0-1448"></a><span class="sd">            The string used in the [`format`][format] function and f-strings.</span>
+<a id="__codelineno-0-1449" name="__codelineno-0-1449"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1450" name="__codelineno-0-1450"></a>        <span class="n">data_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_type</span>
+<a id="__codelineno-0-1451" name="__codelineno-0-1451"></a>
+<a id="__codelineno-0-1452" name="__codelineno-0-1452"></a>        <span class="k">if</span> <span class="n">data_type</span> <span class="ow">is</span> <span class="nb">object</span><span class="p">:</span>
+<a id="__codelineno-0-1453" name="__codelineno-0-1453"></a>            <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="__codelineno-0-1454" name="__codelineno-0-1454"></a>
+<a id="__codelineno-0-1455" name="__codelineno-0-1455"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-1456" name="__codelineno-0-1456"></a>            <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">data_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1457" name="__codelineno-0-1457"></a>
+<a id="__codelineno-0-1458" name="__codelineno-0-1458"></a>        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__format__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">specification</span><span class="p">)</span>
 <a id="__codelineno-0-1459" name="__codelineno-0-1459"></a>
-<a id="__codelineno-0-1460" name="__codelineno-0-1460"></a>        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__format__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">specification</span><span class="p">)</span>
-<a id="__codelineno-0-1461" name="__codelineno-0-1461"></a>
-<a id="__codelineno-0-1462" name="__codelineno-0-1462"></a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<a id="__codelineno-0-1463" name="__codelineno-0-1463"></a>        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_name__</span><span class="p">)</span>
-<a id="__codelineno-0-1464" name="__codelineno-0-1464"></a>
-<a id="__codelineno-0-1465" name="__codelineno-0-1465"></a>    <span class="k">def</span> <span class="nf">__reduce_ex__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">EnumT</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">EnumT</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
-<a id="__codelineno-0-1466" name="__codelineno-0-1466"></a>        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span><span class="p">,)</span>
-<a id="__codelineno-0-1467" name="__codelineno-0-1467"></a>
-<a id="__codelineno-0-1468" name="__codelineno-0-1468"></a>    <span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1469" name="__codelineno-0-1469"></a>    <span class="k">def</span> <span class="nf">__enum_checked_name__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1470" name="__codelineno-0-1470"></a>        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_name__</span>
+<a id="__codelineno-0-1460" name="__codelineno-0-1460"></a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<a id="__codelineno-0-1461" name="__codelineno-0-1461"></a>        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_name__</span><span class="p">)</span>
+<a id="__codelineno-0-1462" name="__codelineno-0-1462"></a>
+<a id="__codelineno-0-1463" name="__codelineno-0-1463"></a>    <span class="k">def</span> <span class="nf">__reduce_ex__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">EnumT</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">EnumT</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+<a id="__codelineno-0-1464" name="__codelineno-0-1464"></a>        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span><span class="p">,)</span>
+<a id="__codelineno-0-1465" name="__codelineno-0-1465"></a>
+<a id="__codelineno-0-1466" name="__codelineno-0-1466"></a>    <span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1467" name="__codelineno-0-1467"></a>    <span class="k">def</span> <span class="nf">__enum_checked_name__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1468" name="__codelineno-0-1468"></a>        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_name__</span>
+<a id="__codelineno-0-1469" name="__codelineno-0-1469"></a>
+<a id="__codelineno-0-1470" name="__codelineno-0-1470"></a>        <span class="k">return</span> <span class="n">UNKNOWN</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
 <a id="__codelineno-0-1471" name="__codelineno-0-1471"></a>
-<a id="__codelineno-0-1472" name="__codelineno-0-1472"></a>        <span class="k">return</span> <span class="n">UNKNOWN</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
-<a id="__codelineno-0-1473" name="__codelineno-0-1473"></a>
-<a id="__codelineno-0-1474" name="__codelineno-0-1474"></a>    <span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1475" name="__codelineno-0-1475"></a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1476" name="__codelineno-0-1476"></a>        <span class="sd">&quot;&quot;&quot;The name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1477" name="__codelineno-0-1477"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span>
-<a id="__codelineno-0-1478" name="__codelineno-0-1478"></a>
-<a id="__codelineno-0-1479" name="__codelineno-0-1479"></a>    <span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1480" name="__codelineno-0-1480"></a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<a id="__codelineno-0-1481" name="__codelineno-0-1481"></a>        <span class="sd">&quot;&quot;&quot;The value of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1482" name="__codelineno-0-1482"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
-<a id="__codelineno-0-1483" name="__codelineno-0-1483"></a>
-<a id="__codelineno-0-1484" name="__codelineno-0-1484"></a>    <span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1485" name="__codelineno-0-1485"></a>    <span class="k">def</span> <span class="nf">title_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1486" name="__codelineno-0-1486"></a>        <span class="sd">&quot;&quot;&quot;The human-readable name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1487" name="__codelineno-0-1487"></a>        <span class="k">return</span> <span class="n">create_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
-<a id="__codelineno-0-1488" name="__codelineno-0-1488"></a>
-<a id="__codelineno-0-1489" name="__codelineno-0-1489"></a>    <span class="n">enum_generate_next_value</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">incremental_next_value</span><span class="p">)</span>
+<a id="__codelineno-0-1472" name="__codelineno-0-1472"></a>    <span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1473" name="__codelineno-0-1473"></a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1474" name="__codelineno-0-1474"></a>        <span class="sd">&quot;&quot;&quot;The name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1475" name="__codelineno-0-1475"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span>
+<a id="__codelineno-0-1476" name="__codelineno-0-1476"></a>
+<a id="__codelineno-0-1477" name="__codelineno-0-1477"></a>    <span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1478" name="__codelineno-0-1478"></a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<a id="__codelineno-0-1479" name="__codelineno-0-1479"></a>        <span class="sd">&quot;&quot;&quot;The value of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1480" name="__codelineno-0-1480"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1481" name="__codelineno-0-1481"></a>
+<a id="__codelineno-0-1482" name="__codelineno-0-1482"></a>    <span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1483" name="__codelineno-0-1483"></a>    <span class="k">def</span> <span class="nf">title_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1484" name="__codelineno-0-1484"></a>        <span class="sd">&quot;&quot;&quot;The human-readable name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1485" name="__codelineno-0-1485"></a>        <span class="k">return</span> <span class="n">create_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
+<a id="__codelineno-0-1486" name="__codelineno-0-1486"></a>
+<a id="__codelineno-0-1487" name="__codelineno-0-1487"></a>    <span class="n">enum_generate_next_value</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">incremental_next_value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -5901,9 +5897,7 @@ attributes; see the documentation for details.</p>
 <span class="normal"><a href="#__codelineno-0-1395">1395</a></span>
 <span class="normal"><a href="#__codelineno-0-1396">1396</a></span>
 <span class="normal"><a href="#__codelineno-0-1397">1397</a></span>
-<span class="normal"><a href="#__codelineno-0-1398">1398</a></span>
-<span class="normal"><a href="#__codelineno-0-1399">1399</a></span>
-<span class="normal"><a href="#__codelineno-0-1400">1400</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1339" name="__codelineno-0-1339"></a><span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">EnumT</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EnumT</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-1398">1398</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1339" name="__codelineno-0-1339"></a><span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">EnumT</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EnumT</span><span class="p">:</span>
 <a id="__codelineno-0-1340" name="__codelineno-0-1340"></a>    <span class="sd">&quot;&quot;&quot;Looks up the member by value.</span>
 <a id="__codelineno-0-1341" name="__codelineno-0-1341"></a>
 <a id="__codelineno-0-1342" name="__codelineno-0-1342"></a><span class="sd">    Example:</span>
@@ -5929,42 +5923,40 @@ attributes; see the documentation for details.</p>
 <a id="__codelineno-0-1362" name="__codelineno-0-1362"></a>    <span class="k">try</span><span class="p">:</span>
 <a id="__codelineno-0-1363" name="__codelineno-0-1363"></a>        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_value_mapping</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
 <a id="__codelineno-0-1364" name="__codelineno-0-1364"></a>
-<a id="__codelineno-0-1365" name="__codelineno-0-1365"></a>    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<a id="__codelineno-0-1366" name="__codelineno-0-1366"></a>        <span class="c1"># not found, no need to do O(n) search</span>
-<a id="__codelineno-0-1367" name="__codelineno-0-1367"></a>        <span class="k">pass</span>
-<a id="__codelineno-0-1368" name="__codelineno-0-1368"></a>
-<a id="__codelineno-0-1369" name="__codelineno-0-1369"></a>    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<a id="__codelineno-0-1370" name="__codelineno-0-1370"></a>        <span class="c1"># not hashable, then do long search, O(n) behavior</span>
-<a id="__codelineno-0-1371" name="__codelineno-0-1371"></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_member_mapping</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-<a id="__codelineno-0-1372" name="__codelineno-0-1372"></a>            <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
-<a id="__codelineno-0-1373" name="__codelineno-0-1373"></a>                <span class="k">return</span> <span class="n">member</span>
+<a id="__codelineno-0-1365" name="__codelineno-0-1365"></a>    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>  <span class="c1"># not found, no need to do O(n) search</span>
+<a id="__codelineno-0-1366" name="__codelineno-0-1366"></a>        <span class="k">pass</span>
+<a id="__codelineno-0-1367" name="__codelineno-0-1367"></a>
+<a id="__codelineno-0-1368" name="__codelineno-0-1368"></a>    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>  <span class="c1"># not hashable, then do long search, O(n) behavior</span>
+<a id="__codelineno-0-1369" name="__codelineno-0-1369"></a>        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_member_mapping</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<a id="__codelineno-0-1370" name="__codelineno-0-1370"></a>            <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-0-1371" name="__codelineno-0-1371"></a>                <span class="k">return</span> <span class="n">member</span>
+<a id="__codelineno-0-1372" name="__codelineno-0-1372"></a>
+<a id="__codelineno-0-1373" name="__codelineno-0-1373"></a>    <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-0-1374" name="__codelineno-0-1374"></a>
-<a id="__codelineno-0-1375" name="__codelineno-0-1375"></a>    <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1376" name="__codelineno-0-1376"></a>
-<a id="__codelineno-0-1377" name="__codelineno-0-1377"></a>    <span class="c1"># still not found -&gt; try enum_missing hook</span>
-<a id="__codelineno-0-1378" name="__codelineno-0-1378"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-1379" name="__codelineno-0-1379"></a>        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">enum_missing</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
-<a id="__codelineno-0-1380" name="__codelineno-0-1380"></a>
-<a id="__codelineno-0-1381" name="__codelineno-0-1381"></a>    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<a id="__codelineno-0-1382" name="__codelineno-0-1382"></a>        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1383" name="__codelineno-0-1383"></a>
-<a id="__codelineno-0-1384" name="__codelineno-0-1384"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_happened</span><span class="p">:</span>
-<a id="__codelineno-0-1385" name="__codelineno-0-1385"></a>        <span class="n">error</span> <span class="o">=</span> <span class="n">error_happened</span>
-<a id="__codelineno-0-1386" name="__codelineno-0-1386"></a>        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-0-1387" name="__codelineno-0-1387"></a>
-<a id="__codelineno-0-1388" name="__codelineno-0-1388"></a>    <span class="k">if</span> <span class="n">is_instance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
-<a id="__codelineno-0-1389" name="__codelineno-0-1389"></a>        <span class="k">return</span> <span class="n">result</span>
-<a id="__codelineno-0-1390" name="__codelineno-0-1390"></a>
-<a id="__codelineno-0-1391" name="__codelineno-0-1391"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-1392" name="__codelineno-0-1392"></a>        <span class="n">error_invalid</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_VALUE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">tick</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">))))</span>
-<a id="__codelineno-0-1393" name="__codelineno-0-1393"></a>
-<a id="__codelineno-0-1394" name="__codelineno-0-1394"></a>        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># no result, no error</span>
-<a id="__codelineno-0-1395" name="__codelineno-0-1395"></a>            <span class="k">raise</span> <span class="n">error_invalid</span>
-<a id="__codelineno-0-1396" name="__codelineno-0-1396"></a>
-<a id="__codelineno-0-1397" name="__codelineno-0-1397"></a>        <span class="k">if</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-1398" name="__codelineno-0-1398"></a>            <span class="n">error</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ENUM_MISSING_ERROR</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
-<a id="__codelineno-0-1399" name="__codelineno-0-1399"></a>
-<a id="__codelineno-0-1400" name="__codelineno-0-1400"></a>        <span class="k">raise</span> <span class="n">error_invalid</span> <span class="kn">from</span> <span class="nn">error</span>
+<a id="__codelineno-0-1375" name="__codelineno-0-1375"></a>    <span class="c1"># still not found -&gt; try enum_missing hook</span>
+<a id="__codelineno-0-1376" name="__codelineno-0-1376"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-1377" name="__codelineno-0-1377"></a>        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">enum_missing</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+<a id="__codelineno-0-1378" name="__codelineno-0-1378"></a>
+<a id="__codelineno-0-1379" name="__codelineno-0-1379"></a>    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-1380" name="__codelineno-0-1380"></a>        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-1381" name="__codelineno-0-1381"></a>
+<a id="__codelineno-0-1382" name="__codelineno-0-1382"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error_happened</span><span class="p">:</span>
+<a id="__codelineno-0-1383" name="__codelineno-0-1383"></a>        <span class="n">error</span> <span class="o">=</span> <span class="n">error_happened</span>
+<a id="__codelineno-0-1384" name="__codelineno-0-1384"></a>        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-1385" name="__codelineno-0-1385"></a>
+<a id="__codelineno-0-1386" name="__codelineno-0-1386"></a>    <span class="k">if</span> <span class="n">is_instance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<a id="__codelineno-0-1387" name="__codelineno-0-1387"></a>        <span class="k">return</span> <span class="n">result</span>
+<a id="__codelineno-0-1388" name="__codelineno-0-1388"></a>
+<a id="__codelineno-0-1389" name="__codelineno-0-1389"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-1390" name="__codelineno-0-1390"></a>        <span class="n">error_invalid</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">INVALID_VALUE</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">tick</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">))))</span>
+<a id="__codelineno-0-1391" name="__codelineno-0-1391"></a>
+<a id="__codelineno-0-1392" name="__codelineno-0-1392"></a>        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># no result, no error</span>
+<a id="__codelineno-0-1393" name="__codelineno-0-1393"></a>            <span class="k">raise</span> <span class="n">error_invalid</span>
+<a id="__codelineno-0-1394" name="__codelineno-0-1394"></a>
+<a id="__codelineno-0-1395" name="__codelineno-0-1395"></a>        <span class="k">if</span> <span class="n">error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-1396" name="__codelineno-0-1396"></a>            <span class="n">error</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">ENUM_MISSING_ERROR</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">result</span><span class="p">)))</span>
+<a id="__codelineno-0-1397" name="__codelineno-0-1397"></a>
+<a id="__codelineno-0-1398" name="__codelineno-0-1398"></a>        <span class="k">raise</span> <span class="n">error_invalid</span> <span class="kn">from</span> <span class="nn">error</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6013,7 +6005,9 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1402">1402</a></span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1400">1400</a></span>
+<span class="normal"><a href="#__codelineno-0-1401">1401</a></span>
+<span class="normal"><a href="#__codelineno-0-1402">1402</a></span>
 <span class="normal"><a href="#__codelineno-0-1403">1403</a></span>
 <span class="normal"><a href="#__codelineno-0-1404">1404</a></span>
 <span class="normal"><a href="#__codelineno-0-1405">1405</a></span>
@@ -6028,26 +6022,24 @@ along with member name and value.</p>
 <span class="normal"><a href="#__codelineno-0-1414">1414</a></span>
 <span class="normal"><a href="#__codelineno-0-1415">1415</a></span>
 <span class="normal"><a href="#__codelineno-0-1416">1416</a></span>
-<span class="normal"><a href="#__codelineno-0-1417">1417</a></span>
-<span class="normal"><a href="#__codelineno-0-1418">1418</a></span>
-<span class="normal"><a href="#__codelineno-0-1419">1419</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1402" name="__codelineno-0-1402"></a><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1403" name="__codelineno-0-1403"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`repr`][repr] calls.</span>
-<a id="__codelineno-0-1404" name="__codelineno-0-1404"></a>
-<a id="__codelineno-0-1405" name="__codelineno-0-1405"></a><span class="sd">    By default contains the [`Enum`][enum_extensions.enums.Enum] name</span>
-<a id="__codelineno-0-1406" name="__codelineno-0-1406"></a><span class="sd">    along with member name and value.</span>
-<a id="__codelineno-0-1407" name="__codelineno-0-1407"></a>
-<a id="__codelineno-0-1408" name="__codelineno-0-1408"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-1409" name="__codelineno-0-1409"></a><span class="sd">        ```python</span>
-<a id="__codelineno-0-1410" name="__codelineno-0-1410"></a><span class="sd">        &gt;&gt;&gt; Color.BLUE</span>
-<a id="__codelineno-0-1411" name="__codelineno-0-1411"></a><span class="sd">        &lt;Color.BLUE: 3&gt;</span>
-<a id="__codelineno-0-1412" name="__codelineno-0-1412"></a><span class="sd">        ```</span>
-<a id="__codelineno-0-1413" name="__codelineno-0-1413"></a>
-<a id="__codelineno-0-1414" name="__codelineno-0-1414"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-1415" name="__codelineno-0-1415"></a><span class="sd">        The string used in the [`repr`][repr] function.</span>
-<a id="__codelineno-0-1416" name="__codelineno-0-1416"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1417" name="__codelineno-0-1417"></a>    <span class="k">return</span> <span class="n">ENUM_MEMBER_REPRESENTATION</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<a id="__codelineno-0-1418" name="__codelineno-0-1418"></a>        <span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
-<a id="__codelineno-0-1419" name="__codelineno-0-1419"></a>    <span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-1417">1417</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1400" name="__codelineno-0-1400"></a><span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1401" name="__codelineno-0-1401"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`repr`][repr] calls.</span>
+<a id="__codelineno-0-1402" name="__codelineno-0-1402"></a>
+<a id="__codelineno-0-1403" name="__codelineno-0-1403"></a><span class="sd">    By default contains the [`Enum`][enum_extensions.enums.Enum] name</span>
+<a id="__codelineno-0-1404" name="__codelineno-0-1404"></a><span class="sd">    along with member name and value.</span>
+<a id="__codelineno-0-1405" name="__codelineno-0-1405"></a>
+<a id="__codelineno-0-1406" name="__codelineno-0-1406"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-1407" name="__codelineno-0-1407"></a><span class="sd">        ```python</span>
+<a id="__codelineno-0-1408" name="__codelineno-0-1408"></a><span class="sd">        &gt;&gt;&gt; Color.BLUE</span>
+<a id="__codelineno-0-1409" name="__codelineno-0-1409"></a><span class="sd">        &lt;Color.BLUE: 3&gt;</span>
+<a id="__codelineno-0-1410" name="__codelineno-0-1410"></a><span class="sd">        ```</span>
+<a id="__codelineno-0-1411" name="__codelineno-0-1411"></a>
+<a id="__codelineno-0-1412" name="__codelineno-0-1412"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-1413" name="__codelineno-0-1413"></a><span class="sd">        The string used in the [`repr`][repr] function.</span>
+<a id="__codelineno-0-1414" name="__codelineno-0-1414"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1415" name="__codelineno-0-1415"></a>    <span class="k">return</span> <span class="n">ENUM_MEMBER_REPRESENTATION</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<a id="__codelineno-0-1416" name="__codelineno-0-1416"></a>        <span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1417" name="__codelineno-0-1417"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6095,7 +6087,9 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1421">1421</a></span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1419">1419</a></span>
+<span class="normal"><a href="#__codelineno-0-1420">1420</a></span>
+<span class="normal"><a href="#__codelineno-0-1421">1421</a></span>
 <span class="normal"><a href="#__codelineno-0-1422">1422</a></span>
 <span class="normal"><a href="#__codelineno-0-1423">1423</a></span>
 <span class="normal"><a href="#__codelineno-0-1424">1424</a></span>
@@ -6107,23 +6101,21 @@ along with member name and value.</p>
 <span class="normal"><a href="#__codelineno-0-1430">1430</a></span>
 <span class="normal"><a href="#__codelineno-0-1431">1431</a></span>
 <span class="normal"><a href="#__codelineno-0-1432">1432</a></span>
-<span class="normal"><a href="#__codelineno-0-1433">1433</a></span>
-<span class="normal"><a href="#__codelineno-0-1434">1434</a></span>
-<span class="normal"><a href="#__codelineno-0-1435">1435</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1421" name="__codelineno-0-1421"></a><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1422" name="__codelineno-0-1422"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`str`][str] calls.</span>
+<span class="normal"><a href="#__codelineno-0-1433">1433</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1419" name="__codelineno-0-1419"></a><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1420" name="__codelineno-0-1420"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`str`][str] calls.</span>
+<a id="__codelineno-0-1421" name="__codelineno-0-1421"></a>
+<a id="__codelineno-0-1422" name="__codelineno-0-1422"></a><span class="sd">    By default contains the [`Enum`][enum_extensions.enums.Enum] name along with member name.</span>
 <a id="__codelineno-0-1423" name="__codelineno-0-1423"></a>
-<a id="__codelineno-0-1424" name="__codelineno-0-1424"></a><span class="sd">    By default contains the [`Enum`][enum_extensions.enums.Enum] name along with member name.</span>
-<a id="__codelineno-0-1425" name="__codelineno-0-1425"></a>
-<a id="__codelineno-0-1426" name="__codelineno-0-1426"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-1427" name="__codelineno-0-1427"></a><span class="sd">        ```python</span>
-<a id="__codelineno-0-1428" name="__codelineno-0-1428"></a><span class="sd">        &gt;&gt;&gt; print(Color.BLUE)</span>
-<a id="__codelineno-0-1429" name="__codelineno-0-1429"></a><span class="sd">        Color.BLUE</span>
-<a id="__codelineno-0-1430" name="__codelineno-0-1430"></a><span class="sd">        ```</span>
-<a id="__codelineno-0-1431" name="__codelineno-0-1431"></a>
-<a id="__codelineno-0-1432" name="__codelineno-0-1432"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-1433" name="__codelineno-0-1433"></a><span class="sd">        The string used in the [`str`][str] function.</span>
-<a id="__codelineno-0-1434" name="__codelineno-0-1434"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1435" name="__codelineno-0-1435"></a>    <span class="k">return</span> <span class="n">ENUM_MEMBER_STRING</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
+<a id="__codelineno-0-1424" name="__codelineno-0-1424"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-1425" name="__codelineno-0-1425"></a><span class="sd">        ```python</span>
+<a id="__codelineno-0-1426" name="__codelineno-0-1426"></a><span class="sd">        &gt;&gt;&gt; print(Color.BLUE)</span>
+<a id="__codelineno-0-1427" name="__codelineno-0-1427"></a><span class="sd">        Color.BLUE</span>
+<a id="__codelineno-0-1428" name="__codelineno-0-1428"></a><span class="sd">        ```</span>
+<a id="__codelineno-0-1429" name="__codelineno-0-1429"></a>
+<a id="__codelineno-0-1430" name="__codelineno-0-1430"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-1431" name="__codelineno-0-1431"></a><span class="sd">        The string used in the [`str`][str] function.</span>
+<a id="__codelineno-0-1432" name="__codelineno-0-1432"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1433" name="__codelineno-0-1433"></a>    <span class="k">return</span> <span class="n">ENUM_MEMBER_STRING</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_name</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6172,7 +6164,9 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1437">1437</a></span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1435">1435</a></span>
+<span class="normal"><a href="#__codelineno-0-1436">1436</a></span>
+<span class="normal"><a href="#__codelineno-0-1437">1437</a></span>
 <span class="normal"><a href="#__codelineno-0-1438">1438</a></span>
 <span class="normal"><a href="#__codelineno-0-1439">1439</a></span>
 <span class="normal"><a href="#__codelineno-0-1440">1440</a></span>
@@ -6193,32 +6187,30 @@ along with member name and value.</p>
 <span class="normal"><a href="#__codelineno-0-1455">1455</a></span>
 <span class="normal"><a href="#__codelineno-0-1456">1456</a></span>
 <span class="normal"><a href="#__codelineno-0-1457">1457</a></span>
-<span class="normal"><a href="#__codelineno-0-1458">1458</a></span>
-<span class="normal"><a href="#__codelineno-0-1459">1459</a></span>
-<span class="normal"><a href="#__codelineno-0-1460">1460</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1437" name="__codelineno-0-1437"></a><span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specification</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1438" name="__codelineno-0-1438"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`format`][format] calls and f-strings.</span>
+<span class="normal"><a href="#__codelineno-0-1458">1458</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1435" name="__codelineno-0-1435"></a><span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">specification</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1436" name="__codelineno-0-1436"></a>    <span class="sd">&quot;&quot;&quot;Returns the string used by [`format`][format] calls and f-strings.</span>
+<a id="__codelineno-0-1437" name="__codelineno-0-1437"></a>
+<a id="__codelineno-0-1438" name="__codelineno-0-1438"></a><span class="sd">    By default this function gives the same result as [`str`][str] does.</span>
 <a id="__codelineno-0-1439" name="__codelineno-0-1439"></a>
-<a id="__codelineno-0-1440" name="__codelineno-0-1440"></a><span class="sd">    By default this function gives the same result as [`str`][str] does.</span>
-<a id="__codelineno-0-1441" name="__codelineno-0-1441"></a>
-<a id="__codelineno-0-1442" name="__codelineno-0-1442"></a><span class="sd">    Example:</span>
-<a id="__codelineno-0-1443" name="__codelineno-0-1443"></a><span class="sd">        ```python</span>
-<a id="__codelineno-0-1444" name="__codelineno-0-1444"></a><span class="sd">        &gt;&gt;&gt; color = Color.RED</span>
-<a id="__codelineno-0-1445" name="__codelineno-0-1445"></a><span class="sd">        &gt;&gt;&gt; print(f&quot;{color}&quot;)</span>
-<a id="__codelineno-0-1446" name="__codelineno-0-1446"></a><span class="sd">        Color.RED</span>
-<a id="__codelineno-0-1447" name="__codelineno-0-1447"></a><span class="sd">        ```</span>
-<a id="__codelineno-0-1448" name="__codelineno-0-1448"></a>
-<a id="__codelineno-0-1449" name="__codelineno-0-1449"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-1450" name="__codelineno-0-1450"></a><span class="sd">        The string used in the [`format`][format] function and f-strings.</span>
-<a id="__codelineno-0-1451" name="__codelineno-0-1451"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-1452" name="__codelineno-0-1452"></a>    <span class="n">data_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_type</span>
-<a id="__codelineno-0-1453" name="__codelineno-0-1453"></a>
-<a id="__codelineno-0-1454" name="__codelineno-0-1454"></a>    <span class="k">if</span> <span class="n">data_type</span> <span class="ow">is</span> <span class="nb">object</span><span class="p">:</span>
-<a id="__codelineno-0-1455" name="__codelineno-0-1455"></a>        <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<a id="__codelineno-0-1456" name="__codelineno-0-1456"></a>
-<a id="__codelineno-0-1457" name="__codelineno-0-1457"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-1458" name="__codelineno-0-1458"></a>        <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">data_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
-<a id="__codelineno-0-1459" name="__codelineno-0-1459"></a>
-<a id="__codelineno-0-1460" name="__codelineno-0-1460"></a>    <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__format__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">specification</span><span class="p">)</span>
+<a id="__codelineno-0-1440" name="__codelineno-0-1440"></a><span class="sd">    Example:</span>
+<a id="__codelineno-0-1441" name="__codelineno-0-1441"></a><span class="sd">        ```python</span>
+<a id="__codelineno-0-1442" name="__codelineno-0-1442"></a><span class="sd">        &gt;&gt;&gt; color = Color.RED</span>
+<a id="__codelineno-0-1443" name="__codelineno-0-1443"></a><span class="sd">        &gt;&gt;&gt; print(f&quot;{color}&quot;)</span>
+<a id="__codelineno-0-1444" name="__codelineno-0-1444"></a><span class="sd">        Color.RED</span>
+<a id="__codelineno-0-1445" name="__codelineno-0-1445"></a><span class="sd">        ```</span>
+<a id="__codelineno-0-1446" name="__codelineno-0-1446"></a>
+<a id="__codelineno-0-1447" name="__codelineno-0-1447"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-1448" name="__codelineno-0-1448"></a><span class="sd">        The string used in the [`format`][format] function and f-strings.</span>
+<a id="__codelineno-0-1449" name="__codelineno-0-1449"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-1450" name="__codelineno-0-1450"></a>    <span class="n">data_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_type</span>
+<a id="__codelineno-0-1451" name="__codelineno-0-1451"></a>
+<a id="__codelineno-0-1452" name="__codelineno-0-1452"></a>    <span class="k">if</span> <span class="n">data_type</span> <span class="ow">is</span> <span class="nb">object</span><span class="p">:</span>
+<a id="__codelineno-0-1453" name="__codelineno-0-1453"></a>        <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<a id="__codelineno-0-1454" name="__codelineno-0-1454"></a>
+<a id="__codelineno-0-1455" name="__codelineno-0-1455"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-1456" name="__codelineno-0-1456"></a>        <span class="nb">type</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">data_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+<a id="__codelineno-0-1457" name="__codelineno-0-1457"></a>
+<a id="__codelineno-0-1458" name="__codelineno-0-1458"></a>    <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__format__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">specification</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6241,13 +6233,13 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1474">1474</a></span>
-<span class="normal"><a href="#__codelineno-0-1475">1475</a></span>
-<span class="normal"><a href="#__codelineno-0-1476">1476</a></span>
-<span class="normal"><a href="#__codelineno-0-1477">1477</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1474" name="__codelineno-0-1474"></a><span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1475" name="__codelineno-0-1475"></a><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1476" name="__codelineno-0-1476"></a>    <span class="sd">&quot;&quot;&quot;The name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1477" name="__codelineno-0-1477"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1472">1472</a></span>
+<span class="normal"><a href="#__codelineno-0-1473">1473</a></span>
+<span class="normal"><a href="#__codelineno-0-1474">1474</a></span>
+<span class="normal"><a href="#__codelineno-0-1475">1475</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1472" name="__codelineno-0-1472"></a><span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1473" name="__codelineno-0-1473"></a><span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1474" name="__codelineno-0-1474"></a>    <span class="sd">&quot;&quot;&quot;The name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1475" name="__codelineno-0-1475"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6270,13 +6262,13 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1479">1479</a></span>
-<span class="normal"><a href="#__codelineno-0-1480">1480</a></span>
-<span class="normal"><a href="#__codelineno-0-1481">1481</a></span>
-<span class="normal"><a href="#__codelineno-0-1482">1482</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1479" name="__codelineno-0-1479"></a><span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1480" name="__codelineno-0-1480"></a><span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<a id="__codelineno-0-1481" name="__codelineno-0-1481"></a>    <span class="sd">&quot;&quot;&quot;The value of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1482" name="__codelineno-0-1482"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1477">1477</a></span>
+<span class="normal"><a href="#__codelineno-0-1478">1478</a></span>
+<span class="normal"><a href="#__codelineno-0-1479">1479</a></span>
+<span class="normal"><a href="#__codelineno-0-1480">1480</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1477" name="__codelineno-0-1477"></a><span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1478" name="__codelineno-0-1478"></a><span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<a id="__codelineno-0-1479" name="__codelineno-0-1479"></a>    <span class="sd">&quot;&quot;&quot;The value of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1480" name="__codelineno-0-1480"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__enum_value__</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6299,13 +6291,13 @@ along with member name and value.</p>
 
       <details class="quote">
         <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1484">1484</a></span>
-<span class="normal"><a href="#__codelineno-0-1485">1485</a></span>
-<span class="normal"><a href="#__codelineno-0-1486">1486</a></span>
-<span class="normal"><a href="#__codelineno-0-1487">1487</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1484" name="__codelineno-0-1484"></a><span class="nd">@dynamic_attribute</span>
-<a id="__codelineno-0-1485" name="__codelineno-0-1485"></a><span class="k">def</span> <span class="nf">title_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-0-1486" name="__codelineno-0-1486"></a>    <span class="sd">&quot;&quot;&quot;The human-readable name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1487" name="__codelineno-0-1487"></a>    <span class="k">return</span> <span class="n">create_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1482">1482</a></span>
+<span class="normal"><a href="#__codelineno-0-1483">1483</a></span>
+<span class="normal"><a href="#__codelineno-0-1484">1484</a></span>
+<span class="normal"><a href="#__codelineno-0-1485">1485</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1482" name="__codelineno-0-1482"></a><span class="nd">@dynamic_attribute</span>
+<a id="__codelineno-0-1483" name="__codelineno-0-1483"></a><span class="k">def</span> <span class="nf">title_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-1484" name="__codelineno-0-1484"></a>    <span class="sd">&quot;&quot;&quot;The human-readable name of the [`Enum`][enum_extensions.enums.Enum] member.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1485" name="__codelineno-0-1485"></a>    <span class="k">return</span> <span class="n">create_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__enum_checked_name__</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -6341,9 +6333,9 @@ along with member name and value.</p>
 
         <details class="quote">
           <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1509">1509</a></span>
-<span class="normal"><a href="#__codelineno-0-1510">1510</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1509" name="__codelineno-0-1509"></a><span class="k">class</span> <span class="nc">IntEnum</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-<a id="__codelineno-0-1510" name="__codelineno-0-1510"></a>    <span class="sd">&quot;&quot;&quot;An enumeration whose values are (and must be) integers.&quot;&quot;&quot;</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1507">1507</a></span>
+<span class="normal"><a href="#__codelineno-0-1508">1508</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1507" name="__codelineno-0-1507"></a><span class="k">class</span> <span class="nc">IntEnum</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-0-1508" name="__codelineno-0-1508"></a>    <span class="sd">&quot;&quot;&quot;An enumeration whose values are (and must be) integers.&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -6372,7 +6364,9 @@ along with member name and value.</p>
 
         <details class="quote">
           <summary>Source code in <code>enum_extensions/enums.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1518">1518</a></span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1516">1516</a></span>
+<span class="normal"><a href="#__codelineno-0-1517">1517</a></span>
+<span class="normal"><a href="#__codelineno-0-1518">1518</a></span>
 <span class="normal"><a href="#__codelineno-0-1519">1519</a></span>
 <span class="normal"><a href="#__codelineno-0-1520">1520</a></span>
 <span class="normal"><a href="#__codelineno-0-1521">1521</a></span>
@@ -6394,33 +6388,31 @@ along with member name and value.</p>
 <span class="normal"><a href="#__codelineno-0-1537">1537</a></span>
 <span class="normal"><a href="#__codelineno-0-1538">1538</a></span>
 <span class="normal"><a href="#__codelineno-0-1539">1539</a></span>
-<span class="normal"><a href="#__codelineno-0-1540">1540</a></span>
-<span class="normal"><a href="#__codelineno-0-1541">1541</a></span>
-<span class="normal"><a href="#__codelineno-0-1542">1542</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1518" name="__codelineno-0-1518"></a><span class="k">class</span> <span class="nc">StringEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
-<a id="__codelineno-0-1519" name="__codelineno-0-1519"></a>    <span class="sd">&quot;&quot;&quot;An enumeration whose values are (and must be) strings.&quot;&quot;&quot;</span>
-<a id="__codelineno-0-1520" name="__codelineno-0-1520"></a>
-<a id="__codelineno-0-1521" name="__codelineno-0-1521"></a>    <span class="nd">@overload</span>
-<a id="__codelineno-0-1522" name="__codelineno-0-1522"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
-<a id="__codelineno-0-1523" name="__codelineno-0-1523"></a>        <span class="o">...</span>
-<a id="__codelineno-0-1524" name="__codelineno-0-1524"></a>
-<a id="__codelineno-0-1525" name="__codelineno-0-1525"></a>    <span class="nd">@overload</span>
-<a id="__codelineno-0-1526" name="__codelineno-0-1526"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
-<a id="__codelineno-0-1527" name="__codelineno-0-1527"></a>        <span class="o">...</span>
-<a id="__codelineno-0-1528" name="__codelineno-0-1528"></a>
-<a id="__codelineno-0-1529" name="__codelineno-0-1529"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">UTF_8</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">STRICT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
-<a id="__codelineno-0-1530" name="__codelineno-0-1530"></a>        <span class="k">if</span> <span class="n">is_string</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
-<a id="__codelineno-0-1531" name="__codelineno-0-1531"></a>            <span class="n">value</span> <span class="o">=</span> <span class="n">item</span>
-<a id="__codelineno-0-1532" name="__codelineno-0-1532"></a>
-<a id="__codelineno-0-1533" name="__codelineno-0-1533"></a>        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<a id="__codelineno-0-1534" name="__codelineno-0-1534"></a>            <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-1540">1540</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1516" name="__codelineno-0-1516"></a><span class="k">class</span> <span class="nc">StringEnum</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-0-1517" name="__codelineno-0-1517"></a>    <span class="sd">&quot;&quot;&quot;An enumeration whose values are (and must be) strings.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-1518" name="__codelineno-0-1518"></a>
+<a id="__codelineno-0-1519" name="__codelineno-0-1519"></a>    <span class="nd">@overload</span>
+<a id="__codelineno-0-1520" name="__codelineno-0-1520"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
+<a id="__codelineno-0-1521" name="__codelineno-0-1521"></a>        <span class="o">...</span>
+<a id="__codelineno-0-1522" name="__codelineno-0-1522"></a>
+<a id="__codelineno-0-1523" name="__codelineno-0-1523"></a>    <span class="nd">@overload</span>
+<a id="__codelineno-0-1524" name="__codelineno-0-1524"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
+<a id="__codelineno-0-1525" name="__codelineno-0-1525"></a>        <span class="o">...</span>
+<a id="__codelineno-0-1526" name="__codelineno-0-1526"></a>
+<a id="__codelineno-0-1527" name="__codelineno-0-1527"></a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">S</span><span class="p">],</span> <span class="n">item</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">UTF_8</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">STRICT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">S</span><span class="p">:</span>
+<a id="__codelineno-0-1528" name="__codelineno-0-1528"></a>        <span class="k">if</span> <span class="n">is_string</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<a id="__codelineno-0-1529" name="__codelineno-0-1529"></a>            <span class="n">value</span> <span class="o">=</span> <span class="n">item</span>
+<a id="__codelineno-0-1530" name="__codelineno-0-1530"></a>
+<a id="__codelineno-0-1531" name="__codelineno-0-1531"></a>        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-1532" name="__codelineno-0-1532"></a>            <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
+<a id="__codelineno-0-1533" name="__codelineno-0-1533"></a>
+<a id="__codelineno-0-1534" name="__codelineno-0-1534"></a>        <span class="n">member</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 <a id="__codelineno-0-1535" name="__codelineno-0-1535"></a>
-<a id="__codelineno-0-1536" name="__codelineno-0-1536"></a>        <span class="n">member</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<a id="__codelineno-0-1536" name="__codelineno-0-1536"></a>        <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">=</span> <span class="n">value</span>
 <a id="__codelineno-0-1537" name="__codelineno-0-1537"></a>
-<a id="__codelineno-0-1538" name="__codelineno-0-1538"></a>        <span class="n">member</span><span class="o">.</span><span class="n">__enum_value__</span> <span class="o">=</span> <span class="n">value</span>
+<a id="__codelineno-0-1538" name="__codelineno-0-1538"></a>        <span class="k">return</span> <span class="n">member</span>
 <a id="__codelineno-0-1539" name="__codelineno-0-1539"></a>
-<a id="__codelineno-0-1540" name="__codelineno-0-1540"></a>        <span class="k">return</span> <span class="n">member</span>
-<a id="__codelineno-0-1541" name="__codelineno-0-1541"></a>
-<a id="__codelineno-0-1542" name="__codelineno-0-1542"></a>    <span class="n">enum_generate_next_value</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">case_fold_name_next_value</span><span class="p">)</span>
+<a id="__codelineno-0-1540" name="__codelineno-0-1540"></a>    <span class="n">enum_generate_next_value</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">case_fold_name_next_value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
