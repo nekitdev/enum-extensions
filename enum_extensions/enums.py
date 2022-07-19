@@ -437,7 +437,7 @@ def create_enum_member(
                 else:
                     enum_type._member_names.append(name)
 
-    except TypeError:  # not hashable
+    except TypeError:  # pragma: no cover  # not hashable
         for name, canonical_member in enum_type._member_mapping.items():
             if canonical_member.__enum_value__ == member.__enum_value__:
                 if canonical_member.__enum_name__ is None:
@@ -1279,7 +1279,7 @@ def incremental_next_value(
         try:
             return value + 1
 
-        except TypeError:
+        except TypeError:  # pragma: no cover
             pass
 
     return start
@@ -1362,12 +1362,10 @@ class Enum(metaclass=EnumType):
         try:
             return cls._value_mapping[value]
 
-        except KeyError:
-            # not found, no need to do O(n) search
+        except KeyError:  # not found, no need to do O(n) search
             pass
 
-        except TypeError:
-            # not hashable, then do long search, O(n) behavior
+        except TypeError:  # not hashable, then do long search, O(n) behavior
             for member in cls._member_mapping.values():
                 if member.__enum_value__ == value:
                     return member

@@ -103,11 +103,11 @@ class TestCreate:
         Enum(COLOR, RED=auto(), GREEN=auto(), BLUE=auto())
 
     def test_create_arguments(self) -> None:
-        Enum(
+        Enum.create(
             COLOR,
             start=1,
             module=__name__,
-            qualname=COLOR,
+            qualified_name=COLOR,
             RED=auto(),
             GREEN=auto(),
             BLUE=auto(),
@@ -363,6 +363,11 @@ class TestEnum:
             assert member
 
     def test_contains(self) -> None:
+        class ListEnum(list, Enum):
+            EMPTY = []
+
+        assert [] in ListEnum
+
         assert Season.AUTUMN in Season
 
         assert WINTER_VALUE in Season

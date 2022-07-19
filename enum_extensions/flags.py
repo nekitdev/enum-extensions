@@ -418,10 +418,10 @@ class FlagType(EnumType):
             try:
                 module = get_frame(DIRECT_CALLER if direct_call else NESTED_CALLER).f_globals[NAME]
 
-            except (AttributeError, ValueError, KeyError):
+            except (AttributeError, ValueError, KeyError):  # pragma: no cover
                 pass
 
-        if module is None:
+        if module is None:  # pragma: no cover
             make_namespace_unpicklable(namespace)
 
         else:
@@ -451,6 +451,7 @@ class FlagType(EnumType):
             The string used in the [`repr`][repr] function.
         """
         return FLAG_REPRESENTATION.format(tick(get_name(self)))
+
 
     def _iter_member_by_value(self: Type[F], value: int) -> Iterator[F]:
         value_mapping = self._value_mapping
@@ -534,7 +535,7 @@ class FlagType(EnumType):
 
         unknown = value & ~flag_mask
 
-        if unknown and boundary is not KEEP:
+        if unknown and boundary is not KEEP:  # pragma: no cover  # TODO: cover?
             raise ValueError(UNKNOWN_VALUES.format(get_name(self), value, unknown, bin(unknown)))
 
         member = self.add_member(None, value)
@@ -722,9 +723,6 @@ class Flag(Enum, metaclass=FlagType):
             return False
 
         return is_same_type(flag, self) and flag_value & self_value == flag_value
-
-    def has(self: FlagT, flag: FlagT) -> bool:
-        return flag in self
 
     def __repr__(self) -> str:
         """Returns the string used by [`repr`][repr] calls.
@@ -977,9 +975,6 @@ class IntFlag(int, Flag, boundary=KEEP):
             other = type(self)(other)
 
         return super().__contains__(other)
-
-    def has(self: FlagT, other: Union[int, FlagT]) -> bool:
-        return other in self
 
     def __or__(self: FlagT, other: Union[int, FlagT]) -> FlagT:
         """Combines values (of flag members) via the `|` (*OR*) operation.
