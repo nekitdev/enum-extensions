@@ -1,4 +1,4 @@
-from enum_extensions.types import Null, Singleton, is_null, is_not_null, null, singleton
+from enum_extensions.types import Null, Singleton, is_not_null, is_null, null, singleton
 
 
 def test_singleton_identity() -> None:

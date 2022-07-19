@@ -82,6 +82,8 @@ testpaths = ["tests"]
 [tool.coverage.run]
 source = ["enum_extensions"]
 
+omit = ["enum_extensions/plugins/*"]
+
 [tool.coverage.report]
 ignore_errors = true
 exclude_lines = [

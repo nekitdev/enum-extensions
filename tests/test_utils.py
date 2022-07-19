@@ -1,4 +1,13 @@
-from enum_extensions.utils import is_descriptor, is_double_under_name
+import pickle
+
+import pytest
+
+from enum_extensions.utils import (
+    is_descriptor,
+    is_double_under_name,
+    make_namespace_unpicklable,
+    make_type_unpicklable,
+)
 
 DESCRIPTOR = property()
 NON_DESCRIPTOR = 42
@@ -35,3 +44,32 @@ def test_is_double_under_name() -> None:
 
     for name in NOT_DOUBLE_UNDER:
         assert not is_double_under_name(name)
+
+
+class Type:
+    pass
+
+
+def test_make_type_unpicklable() -> None:
+    instance = Type()
+
+    pickle.dumps(instance)  # should work
+
+    make_type_unpicklable(Type)
+
+    with pytest.raises(TypeError):
+        pickle.dumps(instance)
+
+
+def test_make_namespace_unpicklable() -> None:
+    namespace = {}
+
+    make_namespace_unpicklable(namespace)
+
+    class Type:
+        vars().update(namespace)
+
+    instance = Type()
+
+    with pytest.raises(TypeError):
+        pickle.dumps(instance)

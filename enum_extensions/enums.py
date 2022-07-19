@@ -243,7 +243,7 @@ class EnumDict(Namespace):
 
         super().__setitem__(name, value)
 
-    def update(self, item: Union[StringMapping[Any], StringPairs[Any]], **items: Any) -> None:
+    def update(self, item: Union[StringMapping[Any], StringPairs[Any]] = (), **items: Any) -> None:
         if is_mapping(item):
             for name, value in item.items():
                 self[name] = value
@@ -521,14 +521,14 @@ class EnumType(type):
 
         enum_type = find_enum_type(bases)
 
-        namespace[ENUM_GENERATE_NEXT_VALUE] = get_attribute(
-            enum_type, ENUM_GENERATE_NEXT_VALUE, None
+        if ignore is None:
+            ignore = ()
+
+        namespace.update(
+            enum_generate_next_value=get_attribute(enum_type, ENUM_GENERATE_NEXT_VALUE, None),
+            enum_ignore=ignore,
+            enum_start=start,
         )
-
-        if ignore is not None:
-            namespace[ENUM_IGNORE] = ignore
-
-        namespace[ENUM_START] = start
 
         return namespace
 
@@ -557,7 +557,7 @@ class EnumType(type):
 
         enum_type = find_enum_type(bases)  # type: ignore
 
-        if enum_type is None and ENUM_DEFINED:
+        if enum_type is None and ENUM_DEFINED:  # pragma: no cover
             enum_type = Enum
 
         data_type = find_data_type(bases)
@@ -856,10 +856,10 @@ class EnumType(type):
             try:
                 module = get_frame(DIRECT_CALLER if direct_call else NESTED_CALLER).f_globals[NAME]
 
-            except (AttributeError, ValueError, KeyError):
+            except (AttributeError, ValueError, KeyError):  # pragma: no cover
                 pass
 
-        if module is None:
+        if module is None:  # pragma: no cover
             make_namespace_unpicklable(namespace)
 
         else:
@@ -1246,7 +1246,14 @@ class EnumType(type):
             except KeyError:
                 pass
 
-        return self.from_value(data, default)
+        try:
+            return self.from_value(data)
+
+        except ValueError:
+            if is_null(default):
+                raise
+
+            return self.from_data(default)
 
     def enum_missing(self: Type[E], value: Any) -> Optional[E]:
         if self._unknown:
@@ -1371,7 +1378,7 @@ class Enum(metaclass=EnumType):
         try:
             result = cls.enum_missing(value)  # type: ignore
 
-        except AttributeError:
+        except AttributeError:  # pragma: no cover
             result = None
 
         except Exception as error_happened:
@@ -1523,7 +1530,7 @@ class StringEnum(str, Enum):
         if is_string(item):
             value = item
 
-        else:
+        else:  # pragma: no cover
             value = str(item, encoding, errors)
 
         member = str.__new__(cls, value)

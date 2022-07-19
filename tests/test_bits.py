@@ -1,4 +1,4 @@
-from enum_extensions.bits import bit_at, bit_count, bit_mask, is_single_bit, iter_bits
+from enum_extensions.bits import bin, bit_at, bit_count, bit_mask, is_single_bit, iter_bits
 
 INDEX = 4
 
@@ -37,3 +37,34 @@ def test_bit_count() -> None:
 
 def test_iter_bits() -> None:
     assert tuple(iter_bits(BIT_MASK)) == BITS
+
+
+BINARY = "b"
+SPACE = " "
+
+BASE = 2
+
+
+class TestBinary:
+    RANGE = range(0, 1 << 10)
+
+    def parse(
+        self, string: str, space: str = SPACE, binary: str = BINARY, base: int = BASE
+    ) -> int:
+        prefix_string, _, value_string = string.partition(space)
+
+        length = len(value_string)
+        value = int(value_string, base)
+
+        _, _, sign_string = prefix_string.partition(binary)
+
+        sign = int(sign_string, base)
+
+        return -(sign << length) + value
+
+    def test_binary(self) -> None:
+        for item in self.RANGE:
+            for binary in (item, ~item):
+                string = bin(binary)
+
+                assert self.parse(string) == binary

@@ -29,7 +29,6 @@ __all__ = (
     "is_int",
     "is_string",
     "is_same_type",
-    "is_iterable",
     "is_mapping",
     "is_tuple",
 )
@@ -92,10 +91,6 @@ def is_string(item: Any) -> TypeGuard[str]:
 
 def is_same_type(item: Any, value: T) -> TypeGuard[T]:
     return type(item) is type(value)
-
-
-def is_iterable(item: MaybeIterable[T]) -> TypeGuard[Iterable[T]]:
-    return is_instance(item, Iterable)
 
 
 def is_mapping(item: MaybeMapping[T, U, V]) -> TypeGuard[Mapping[T, U]]:
