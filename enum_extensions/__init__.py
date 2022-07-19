@@ -39,7 +39,7 @@ __url__ = "https://github.com/nekitdev/enum_extensions"
 __title__ = "enum_extensions"
 __author__ = "nekitdev"
 __license__ = "MIT"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from enum_extensions.auto import Auto, auto, is_auto
 from enum_extensions.enums import (

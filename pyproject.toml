@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "enum-extensions"
-version = "0.1.0"
+version = "0.1.1"
 description = "Enhanced enumerations for Python."
 authors = ["nekitdev"]
 license = "MIT"
@@ -129,7 +129,7 @@ warn_unused_ignores = false  # compatibility
 
 [tool.changelog]
 name = "enum-extensions"
-version = "0.1.0"
+version = "0.1.1"
 url = "https://github.com/nekitdev/enum-extensions"
 directory = "changes"
 output = "CHANGELOG.md"

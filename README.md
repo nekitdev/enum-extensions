@@ -46,7 +46,7 @@ Or by directly specifying it in the configuration like so:
 
 ```toml
 [tool.poetry.dependencies]
-enum-extensions = "^0.1.0"
+enum-extensions = "^0.1.1"
 ```
 
 Alternatively, you can add it directly from the source:
